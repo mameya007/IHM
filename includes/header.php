@@ -30,6 +30,7 @@ foreach ($records as $record) {
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
   <!--   <link rel="stylesheet" type="text/css" href="assets/css/normalize.css"> -->
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <!-- <link rel="stylesheet" type="text/css" href="assets/css/theme.css"> -->
 
     <script src='https://www.google.com/recaptcha/api.js'></script>
 

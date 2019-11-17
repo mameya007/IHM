@@ -1,30 +1,30 @@
-<?php require_once 'includes/header.php'; ?>
+<?php require_once 'includes/header.php';?>
 
 <?php
-	if (isset($_POST['add_to_wishlist'])) {
-		if (!isset($_SESSION['customer_email'])) {
-			header('Location: checkout.php');
-		}else {
-			$customer_email = $_SESSION['customer_email'];
+if (isset($_POST['add_to_wishlist'])) {
+    if (!isset($_SESSION['customer_email'])) {
+        header('Location: checkout.php');
+    } else {
+        $customer_email = $_SESSION['customer_email'];
 
-			$get_customer = $getFromU->view_customer_by_email($customer_email);
+        $get_customer = $getFromU->view_customer_by_email($customer_email);
 
-			$customer_id = $get_customer->customer_id;
+        $customer_id = $get_customer->customer_id;
 
-			$product_id = $getFromU->checkInput($_GET['product_id']);
+        $product_id = $getFromU->checkInput($_GET['product_id']);
 
-			$check_wishlist = $getFromU->check_wishlist_by_customer_id_and_product_id($customer_id, $product_id);
+        $check_wishlist = $getFromU->check_wishlist_by_customer_id_and_product_id($customer_id, $product_id);
 
-			if ($check_wishlist === true) {
-				$error = "This Product is already in Wishlist";
-			}else{
-				$insert_wishlist = $getFromU->create('wishlist', array('customer_id' => $customer_id , 'product_id' => $product_id));
-				if ($insert_wishlist) {
-					$insert_wishlist_msg = "Product inserted successfully to wishlist";
-				}
-			}
-		}
-	}
+        if ($check_wishlist === true) {
+            $error = "This Product is already in Wishlist";
+        } else {
+            $insert_wishlist = $getFromU->create('wishlist', array('customer_id' => $customer_id, 'product_id' => $product_id));
+            if ($insert_wishlist) {
+                $insert_wishlist_msg = "Product inserted successfully to wishlist";
+            }
+        }
+    }
+}
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" id="navbar">
@@ -44,7 +44,7 @@
 				<li><a href="checkout.php">My Account</a></li>
 			<?php else: ?>
 				<li><a href="customer/my_account.php?my_orders">My Account</a></li>
-			<?php endif ?>
+			<?php endif?>
 			<li>
 				<a href="cart.php">Shopping Cart</a>
 			</li>
@@ -73,50 +73,50 @@
 		<div class="row">
 
 		<?php
-			if (isset($_GET['product_id'])) {
-				$the_product_id = $_GET['product_id'];
+if (isset($_GET['product_id'])) {
+    $the_product_id = $_GET['product_id'];
 
-				$get_products = $getFromU->viewProductByProductID($the_product_id);
-				//var_dump($get_products);
+    $get_products = $getFromU->viewProductByProductID($the_product_id);
+    //var_dump($get_products);
 
-				foreach ($get_products as $get_product) {
-					$p_cat_id          = $get_product->p_cat_id;
-					$product_title     = $get_product->product_title;
-					$product_price     = $get_product->product_price;
-					$product_desc      = $get_product->product_desc;
-					$product_img1      = $get_product->product_img1;
-					$product_img2 		 = $get_product->product_img2;
-					$product_img3      = $get_product->product_img3;
-					$product_label     = $get_product->product_label;
-					$manufacturer_id   = $get_product->manufacturer_id;
-					$product_psp_price = $get_product->product_psp_price;
-					$product_features  = $get_product->product_features;
-					$product_video     = $get_product->product_video;
-					$status            = $get_product->status;
+    foreach ($get_products as $get_product) {
+        $p_cat_id = $get_product->p_cat_id;
+        $product_title = $get_product->product_title;
+        $product_price = $get_product->product_price;
+        $product_desc = $get_product->product_desc;
+        $product_img1 = $get_product->product_img1;
+        $product_img2 = $get_product->product_img2;
+        $product_img3 = $get_product->product_img3;
+        $product_label = $get_product->product_label;
+        $manufacturer_id = $get_product->manufacturer_id;
+        $product_psp_price = $get_product->product_psp_price;
+        $product_features = $get_product->product_features;
+        $product_video = $get_product->product_video;
+        $status = $get_product->status;
 
-					$view_manufacturer = $getFromU->selectManufacturerByManufacturerID($manufacturer_id);
-					$manufacturer_title= $view_manufacturer->manufacturer_title;
+        $view_manufacturer = $getFromU->selectManufacturerByManufacturerID($manufacturer_id);
+        $manufacturer_title = $view_manufacturer->manufacturer_title;
 
-					if ($status == "product") {
-						$title = "Product";
-					}elseif ($status == "bundle") {
-						$title = "Bundle";
-					}
+        if ($status == "product") {
+            $title = "Product";
+        } elseif ($status == "bundle") {
+            $title = "Bundle";
+        }
 
-					if ($product_label == "Sale" || $product_label == "Gift" || $product_label == "Bundle") {
-						$product_price = "<del>$$product_price</del>";
-						$product_psp_price = "$$product_psp_price";
-					}else{
-						$product_price = "$$product_price";
-						$product_psp_price = "";
-					}
+        if ($product_label == "Sale" || $product_label == "Gift" || $product_label == "Bundle") {
+            $product_price = "<del>$$product_price</del>";
+            $product_psp_price = "$$product_psp_price";
+        } else {
+            $product_price = "$$product_price";
+            $product_psp_price = "";
+        }
 
-					$get_p_cats = $getFromU->viewAllByCatID($p_cat_id);
-					foreach ($get_p_cats as $get_p_cat) {
-						$p_cat_title = $get_p_cat->p_cat_title;
-						$p_cat_id = $get_p_cat->p_cat_id;
+        $get_p_cats = $getFromU->viewAllByCatID($p_cat_id);
+        foreach ($get_p_cats as $get_p_cat) {
+            $p_cat_title = $get_p_cat->p_cat_title;
+            $p_cat_id = $get_p_cat->p_cat_id;
 
-		?>
+            ?>
 
 
 
@@ -141,7 +141,7 @@
 					  </button>
 					</div>
 				</div>
-			<?php endif ?>
+			<?php endif?>
 
 			<?php if (isset($insert_wishlist_msg)): ?>
 				<div class="col-md-12">
@@ -152,7 +152,7 @@
 					  </button>
 					</div>
 				</div>
-			<?php endif ?>
+			<?php endif?>
 
 
 			<div class="col-md-12">
@@ -163,7 +163,12 @@
 							  <ol class="carousel-indicators">
 							    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
 							    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-							    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+								<?php
+if ($product_img3 != "") {
+                echo "<li data-target='#carouselExampleIndicators' data-slide-to='2'></li>";
+            }
+
+            ?>
 							  </ol>
 							  <div class="carousel-inner">
 							    <div class="carousel-item active">
@@ -172,9 +177,14 @@
 							    <div class="carousel-item">
 							      <img class="d-block w-100 img-fluid" src="admin_area/product_images/<?php echo $product_img2; ?>" alt="Second slide">
 							    </div>
-							    <div class="carousel-item">
-							      <img class="d-block w-100 img-fluid" src="admin_area/product_images/<?php echo $product_img3; ?>" alt="Third slide">
-							    </div>
+							   <?php
+if ($product_img3 != "") {
+                echo "<div class='carousel-item'>
+								<img class='d-block w-100 img-fluid' src='admin_area/product_images/<?php echo $product_img3; ?>' alt='Third slide'>
+							  </div>"
+                ;
+            }
+            ?>
 							  </div>
 							  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 							    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -191,7 +201,7 @@
 								<div class="thelabel"><?php echo $product_label; ?></div>
 								<div class="label-background"></div>
 							</a>
-						<?php endif ?>
+						<?php endif?>
 					</div>
 
 					<div class="col-sm-6">
@@ -200,39 +210,38 @@
 						    <h4 class="card-title mb-4"><?php echo $product_title; ?></h4>
 						    <?php
 
-						    	if (isset($_POST['add_to_cart'])) {
-						    		$p_id = $_POST['product_id'];
-						    		$ip_add = $getFromU->getRealUserIp();
-						    		$product_qty = $_POST['product_qty'];
-						    		$product_size = $_POST['product_size'];
+            if (isset($_POST['add_to_cart'])) {
+                $p_id = $_POST['product_id'];
+                $ip_add = $getFromU->getRealUserIp();
+                $product_qty = $_POST['product_qty'];
+                $product_size = $_POST['product_size'];
 
-						    		$get_product = $getFromU->view_Product_By_Product_ID($p_id);
-						    		$product_price = $get_product->product_price;
-						    		$product_psp_price = $get_product->product_psp_price;
-						    		$product_label = $get_product->product_label;
+                $get_product = $getFromU->view_Product_By_Product_ID($p_id);
+                $product_price = $get_product->product_price;
+                $product_psp_price = $get_product->product_psp_price;
+                $product_label = $get_product->product_label;
 
-						    		$check_product_by_ip_id = $getFromU->check_product_by_ip_id($ip_add, $p_id);
+                $check_product_by_ip_id = $getFromU->check_product_by_ip_id($ip_add, $p_id);
 
-						    		if ($check_product_by_ip_id === true) {
-						    			echo '<script>alert("This product is already added in cart")</script>';
-						    		}else{
+                if ($check_product_by_ip_id === true) {
+                    echo '<script>alert("This product is already added in cart")</script>';
+                } else {
 
-						    			if ($product_label == "Sale" || $product_label == "Gift" || $product_label == "Bundle") {
-						    				$product_price = $product_psp_price;
-						    			}else {
-						    				$product_price = $product_price;
-						    			}
+                    if ($product_label == "Sale" || $product_label == "Gift" || $product_label == "Bundle") {
+                        $product_price = $product_psp_price;
+                    } else {
+                        $product_price = $product_price;
+                    }
 
-						    			$insert_cart = $getFromU->create("cart", array("p_id" => $p_id, "ip_add" => $ip_add, "qty" =>$product_qty, "product_price" =>$product_price, "size" =>$product_size));
-						    			echo '<script>alert("This product added successfully in cart")</script>';
-						    			header('Location: shop.php');
+                    $insert_cart = $getFromU->create("cart", array("p_id" => $p_id, "ip_add" => $ip_add, "qty" => $product_qty, "product_price" => $product_price, "size" => $product_size));
+                    echo '<script>alert("This product added successfully in cart")</script>';
+                    header('Location: shop.php');
 
-						    		}
+                }
 
-						    	}
+            }
 
-
-						    ?>
+            ?>
 								<form method="post">
 									<div class="form-group row">
 								    <label for="product_qty" class="col-sm-5 col-form-label-sm text-xl-right"><?php echo $title; ?> Quantity</label>
@@ -269,12 +278,12 @@
 
 								  <center class='mb-3'>
 								  	<?php
-								  		$view_icons = $getFromU->viewIconsByProductID($the_product_id);
-								  		foreach ($view_icons as $view_icon) {
-								  			$icon_image =$view_icon->icon_image;
-								  	?>
+$view_icons = $getFromU->viewIconsByProductID($the_product_id);
+            foreach ($view_icons as $view_icon) {
+                $icon_image = $view_icon->icon_image;
+                ?>
 								  	<img src="admin_area/icon_images/<?php echo $icon_image; ?>" width="45" height="45">
-								  	<?php } ?>
+								  	<?php }?>
 
 								  </center>
 
@@ -283,7 +292,7 @@
 								  <h6 class="card-text mt-4">Price : <?php echo $product_price; ?></h6>
 								  <?php if ($product_label == "Sale" || $product_label == "Gift" || $product_label == "Bundle"): ?>
 								  	<h6 class="card-text ">Discount Price : <?php echo $product_psp_price; ?></h6>
-								  <?php endif ?>
+								  <?php endif?>
 
 								  <button type="submit" name="add_to_cart" class="card-link btn btn-outline-info mt-3 px-4"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
 								  <button type="submit" name="add_to_wishlist" class="card-link btn btn-outline-danger mt-3 px-4"><i class="fas fa-heart"></i> Add to Wishlist</button>
@@ -302,9 +311,14 @@
 							<div class="col-4">
 								<a href="#" class="thumb"><img class="img-fluid img-thumbnail" src="admin_area/product_images/<?php echo $product_img2; ?>"></a>
 							</div>
-							<div class="col-4">
-								<a href="#" class="thumb"><img class="img-fluid img-thumbnail" src="admin_area/product_images/<?php echo $product_img3; ?>"></a>
-							</div>
+							<?php
+if ($product_img3 != "") {
+                echo "<div class='col-4'>
+							<a href='#' class='thumb'><img class='img-fluid img-thumbnail' src='admin_area/product_images/ $product_img3;'></a>
+						</div>"
+                ;
+            }
+            ?>
 						</div>
 
 					</div>
@@ -358,7 +372,7 @@
 
 
 			</div> <!-- col-md-9 END --3 -->
-		<?php } } } ?>
+		<?php }}}?>
 		</div> <!-- Row end -->
 
 		<?php if ($status == "product"): ?>
@@ -373,37 +387,37 @@
 
 		  <div class="row">
 		  	<?php
-		  		//var_dump($p_cat_id);
-		  		$view_products = $getFromU->viewProductByProductID($the_product_id);
-		  		//var_dump($products);
-		  		foreach ($view_products as $view_product) {
-		  			$p_cat_id = $view_product->p_cat_id;
-		  			//var_dump($p_cat_id);
-		  			$products = $getFromU->viewProductByCatID($p_cat_id);
-		  			foreach ($products as $product) {
-			  			$product_id = $product->product_id;
-			  			$product_title = $product->product_title;
-			  			$product_price = $product->product_price;
-			  			$product_img1 = $product->product_img1;
-			  			$product_label   = $product->product_label;
-							$manufacturer_id = $product->manufacturer_id;
-							$product_psp_price = $product->product_psp_price;
+//var_dump($p_cat_id);
+$view_products = $getFromU->viewProductByProductID($the_product_id);
+//var_dump($products);
+foreach ($view_products as $view_product) {
+    $p_cat_id = $view_product->p_cat_id;
+    //var_dump($p_cat_id);
+    $products = $getFromU->viewProductByCatID($p_cat_id);
+    foreach ($products as $product) {
+        $product_id = $product->product_id;
+        $product_title = $product->product_title;
+        $product_price = $product->product_price;
+        $product_img1 = $product->product_img1;
+        $product_label = $product->product_label;
+        $manufacturer_id = $product->manufacturer_id;
+        $product_psp_price = $product->product_psp_price;
 
-							$view_manufacturer = $getFromU->selectManufacturerByManufacturerID($manufacturer_id);
-							$manufacturer_title = $view_manufacturer->manufacturer_title;
+        $view_manufacturer = $getFromU->selectManufacturerByManufacturerID($manufacturer_id);
+        $manufacturer_title = $view_manufacturer->manufacturer_title;
 
-							if ($product_label == "Sale" || $product_label == "Gift") {
-								$product_price = "<del>$$product_price</del>";
-								$product_psp_price = "<i class='fas fa-long-arrow-alt-right'></i> $$product_psp_price";
-							}else{
-								$product_price = "$$product_price";
-								$product_psp_price = "";
-							}
+        if ($product_label == "Sale" || $product_label == "Gift") {
+            $product_price = "<del>$$product_price</del>";
+            $product_psp_price = "<i class='fas fa-long-arrow-alt-right'></i> $$product_psp_price";
+        } else {
+            $product_price = "$$product_price";
+            $product_psp_price = "";
+        }
 
-			  			if ($product_id == $the_product_id) {
-			  				continue;
-			  			}
-		  	?>
+        if ($product_id == $the_product_id) {
+            continue;
+        }
+        ?>
 
 		  	<div class="col-sm-6 col-md-3 justify-content-center single">
 					<div class="product mb-4">
@@ -429,10 +443,10 @@
 							<div class="thelabel"><?php echo $product_label; ?></div>
 							<div class="label-background"></div>
 						</a>
-					<?php endif ?>
+					<?php endif?>
 				</div> <!-- SINGLE PRODUCT END -->
 
-				<?php  } } ?>
+				<?php }}?>
 		  </div> <!-- SINGLE PRODUCT ROW END -->
 
 	  <?php else: ?>
@@ -448,36 +462,36 @@
 		  <div class="row">
 		  	<?php
 
-		  		$get_bundle_product_relations = $getFromU->viewAllFromBundleByBundleID($the_product_id);
+$get_bundle_product_relations = $getFromU->viewAllFromBundleByBundleID($the_product_id);
 
-		  		foreach ($get_bundle_product_relations as $get_bundle_product_relation) {
-		  			$bundle_product_relation_product_id = $get_bundle_product_relation->product_id;
+foreach ($get_bundle_product_relations as $get_bundle_product_relation) {
+    $bundle_product_relation_product_id = $get_bundle_product_relation->product_id;
 
-		  			$product = $getFromU->viewFromTableByProductID("products", $bundle_product_relation_product_id);
+    $product = $getFromU->viewFromTableByProductID("products", $bundle_product_relation_product_id);
 
-	  				$product_id = $product->product_id;
-		  			$product_title = $product->product_title;
-		  			$product_price = $product->product_price;
-		  			$product_img1 = $product->product_img1;
-		  			$product_label   = $product->product_label;
-						$manufacturer_id = $product->manufacturer_id;
-						$product_psp_price = $product->product_psp_price;
+    $product_id = $product->product_id;
+    $product_title = $product->product_title;
+    $product_price = $product->product_price;
+    $product_img1 = $product->product_img1;
+    $product_label = $product->product_label;
+    $manufacturer_id = $product->manufacturer_id;
+    $product_psp_price = $product->product_psp_price;
 
-						$view_manufacturer = $getFromU->selectManufacturerByManufacturerID($manufacturer_id);
-						$manufacturer_title = $view_manufacturer->manufacturer_title;
+    $view_manufacturer = $getFromU->selectManufacturerByManufacturerID($manufacturer_id);
+    $manufacturer_title = $view_manufacturer->manufacturer_title;
 
-						if ($product_label == "Sale" || $product_label == "Gift") {
-							$product_price = "<del>$$product_price</del>";
-							$product_psp_price = "<i class='fas fa-long-arrow-alt-right'></i> $$product_psp_price";
-						}else{
-							$product_price = "$$product_price";
-							$product_psp_price = "";
-						}
+    if ($product_label == "Sale" || $product_label == "Gift") {
+        $product_price = "<del>$$product_price</del>";
+        $product_psp_price = "<i class='fas fa-long-arrow-alt-right'></i> $$product_psp_price";
+    } else {
+        $product_price = "$$product_price";
+        $product_psp_price = "";
+    }
 
-		  			if ($product_id == $the_product_id) {
-		  				continue;
-		  			}
-		  	?>
+    if ($product_id == $the_product_id) {
+        continue;
+    }
+    ?>
 
 		  	<div class="col-sm-6 col-md-3 justify-content-center single">
 					<div class="product mb-4">
@@ -503,17 +517,17 @@
 							<div class="thelabel"><?php echo $product_label; ?></div>
 							<div class="label-background"></div>
 						</a>
-					<?php endif ?>
+					<?php endif?>
 				</div> <!-- SINGLE PRODUCT END -->
 
-				<?php  } ?>
+				<?php }?>
 		  </div> <!-- SINGLE PRODUCT ROW END -->
 
-	  <?php endif ?>
+	  <?php endif?>
 
 
 	</div>
 </div>
 
 
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once 'includes/footer.php';?>
