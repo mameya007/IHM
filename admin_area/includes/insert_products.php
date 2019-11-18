@@ -27,14 +27,13 @@ if (isset($_POST['submit'])) {
     move_uploaded_file($temp_name3, "product_images/$product_img3");
 
     $insert_product = $getFromU->create("products", array("p_cat_id" => $product_cat, "cat_id" => $cat_id, "manufacturer_id" => $manufacturer_id, "add_date" => date("Y-m-d H:i:s"), "product_title" => $product_title, "product_img1" => $product_img1, "product_img2" => $product_img2, "product_img3" => $product_img3, "product_price" => $product_price, "product_psp_price" => $product_psp_price, "product_desc" => $product_desc, "product_features" => $product_features, "product_video" => $product_video, "product_keywords" => $product_keywords, "product_label" => $product_label, "status" => $status));
-
-    if ($insert_product) {
-        echo '<script>alert("Product has been added Sucessfully")</script>';
-        echo '<script>window.open("index.php?add_product", "self")</script>';
-    } else {
-        echo '<script>alert("Product has not added")</script>';
-        // echo $insert_product;
-    }
+    // if ($insert_product) {
+    //     echo '<script>alert("Product has been added Sucessfully")</script>';
+    //     echo '<script>window.open("index.php?add_product", "self")</script>';
+    // } else {
+    //     echo '<script>alert("Product has not added")</script>';
+    //     // echo $insert_product;
+    // }
 
 }
 

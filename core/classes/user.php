@@ -75,12 +75,11 @@
       $values  = ':'.implode(', :', array_keys($fields));
   		$sql = "INSERT INTO {$table} ({$columns}) VALUES({$values})";
       $stmt = $this->pdo->prepare($sql);
-
   		if ($stmt) {
   			foreach ($fields as $key => $data) {
-  				$stmt->bindValue(':'.$key, $data);
-  			}
-  			$stmt->execute();
+  				$stmt->bindValue(':'.$key, '$data');
+        }
+        $stmt->execute();
   			return $this->pdo->lastInsertId();
   		}
   	}

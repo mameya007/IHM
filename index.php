@@ -1,4 +1,4 @@
-<?php require_once 'includes/header.php'; ?>
+<?php require_once 'includes/header.php';?>
 
 		<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" id="navbar">
 		  <a class="navbar-brand home" href="#">Navbar</a>
@@ -12,13 +12,13 @@
 		        <a class="active" href="index.php">Home</a>
 		      </li>
 		      <li>
-		        <a href="shop.php">Shopa</a>
+		        <a href="shop.php">Shop</a>
 		      </li>
 		      <?php if (!isset($_SESSION['customer_email'])): ?>
 						<li><a href="checkout.php">My Account</a></li>
 					<?php else: ?>
 						<li><a href="customer/my_account.php?my_orders">My Account</a></li>
-					<?php endif ?>
+					<?php endif?>
 		      <li>
 		        <a href="cart.php">Shopping Cart</a>
 		      </li>
@@ -55,14 +55,14 @@
 					  </ol>
 					  <div class="carousel-inner">
 					  	<?php
-					  		$slides = $getFromU->selectSlide1();
-					  		foreach ($slides as $slide) {
-					  			$slide_image = $slide->slide_image;
-					  			$slide_name  = $slide->slide_name;
-					  			$slide_title  = $slide->slide_title;
-					  			$slide_text  = $slide->slide_text;
-					  			$slide_url  = $slide->slide_url;
-					  	?>
+$slides = $getFromU->selectSlide1();
+foreach ($slides as $slide) {
+    $slide_image = $slide->slide_image;
+    $slide_name = $slide->slide_name;
+    $slide_title = $slide->slide_title;
+    $slide_text = $slide->slide_text;
+    $slide_url = $slide->slide_url;
+    ?>
 					  	 <div class="carousel-item active">
 					      <a href="<?php echo $slide_url; ?>" target="_blank"><img class="d-block w-100 img-fluid" src="admin_area/slides_images/<?php echo $slide_image; ?>" alt="<?php echo $slide_name; ?>"></a>
 					      <div class="carousel-caption d-none d-md-block">
@@ -71,17 +71,17 @@
 							  </div>
 					    </div>
 
-							<?php } ?>
+							<?php }?>
 
 							<?php
-					  		$slides = $getFromU->selectSlideAll();
-					  		foreach ($slides as $slide) {
-					  			$slide_image = $slide->slide_image;
-					  			$slide_name  = $slide->slide_name;
-					  			$slide_title  = $slide->slide_title;
-					  			$slide_text  = $slide->slide_text;
-					  			$slide_url  = $slide->slide_url;
-					  	?>
+$slides = $getFromU->selectSlideAll();
+foreach ($slides as $slide) {
+    $slide_image = $slide->slide_image;
+    $slide_name = $slide->slide_name;
+    $slide_title = $slide->slide_title;
+    $slide_text = $slide->slide_text;
+    $slide_url = $slide->slide_url;
+    ?>
 					  	 <div class="carousel-item">
 					      <a href="<?php echo $slide_url; ?>" target="_blank"><img class="d-block w-100 img-fluid" src="admin_area/slides_images/<?php echo $slide_image; ?>" alt="<?php echo $slide_name; ?>"></a>
 					      <div class="carousel-caption d-none d-md-block">
@@ -89,7 +89,7 @@
 							    <p><?php echo $slide_text; ?></p>
 							  </div>
 					    </div>
-							<?php } ?>
+							<?php }?>
 
 					  </div>
 
@@ -111,11 +111,11 @@
 		<div class="container mt-4 advantages"> <!-- advantages starts -->
 			<div class="row">
 				<?php
-					$view_boxes = $getFromU->viewAllFromTable('boxes_section');
-					foreach ($view_boxes as $view_box) {
-						$box_title = $view_box->box_title;
-						$box_desc = $view_box->box_desc;
-				?>
+$view_boxes = $getFromU->viewAllFromTable('boxes_section');
+foreach ($view_boxes as $view_box) {
+    $box_title = $view_box->box_title;
+    $box_desc = $view_box->box_desc;
+    ?>
 
 				<div class="col-sm-4">
 					<div class="card">
@@ -126,7 +126,7 @@
 					</div>
 				</div>
 
-				<?php } ?>
+				<?php }?>
 
 			</div>
 		</div> <!-- advantages ends -->
@@ -146,28 +146,28 @@
 			<div class="row">
 
 				<?php
-					$getProducts         = $getFromU->selectLatestProduct();
-					foreach ($getProducts as $getProduct) {
-						$product_id        = $getProduct->product_id;
-						$product_title     = $getProduct->product_title;
-						$product_price     = $getProduct->product_price;
-						$product_img1      = $getProduct->product_img1;
-						$product_label     = $getProduct->product_label;
-						$manufacturer_id   = $getProduct->manufacturer_id;
-						$product_psp_price = $getProduct->product_psp_price;
-						$product_url       = $getProduct->product_url;
+$getProducts = $getFromU->selectLatestProduct();
+foreach ($getProducts as $getProduct) {
+    $product_id = $getProduct->product_id;
+    $product_title = $getProduct->product_title;
+    $product_price = $getProduct->product_price;
+    $product_img1 = $getProduct->product_img1;
+    $product_label = $getProduct->product_label;
+    $manufacturer_id = $getProduct->manufacturer_id;
+    $product_psp_price = $getProduct->product_psp_price;
+    $product_url = $getProduct->product_url;
 
-						$view_manufacturer = $getFromU->selectManufacturerByManufacturerID($manufacturer_id);
-						$manufacturer_title = $view_manufacturer->manufacturer_title;
+    $view_manufacturer = $getFromU->selectManufacturerByManufacturerID($manufacturer_id);
+    $manufacturer_title = $view_manufacturer->manufacturer_title;
 
-						if ($product_label == "Sale" || $product_label == "Gift") {
-							$product_price = "<del>$$product_price</del>";
-							$product_psp_price = "<i class='fas fa-long-arrow-alt-right'></i> $$product_psp_price";
-						}else{
-							$product_price = "$$product_price";
-							$product_psp_price = "";
-						}
-				?>
+    if ($product_label == "Sale" || $product_label == "Gift") {
+        $product_price = "<del>$$product_price</del>";
+        $product_psp_price = "<i class='fas fa-long-arrow-alt-right'></i> $$product_psp_price";
+    } else {
+        $product_price = "$$product_price";
+        $product_psp_price = "";
+    }
+    ?>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 single">
 					<div class="product mb-4">
@@ -194,11 +194,11 @@
 							<div class="thelabel"><?php echo $product_label; ?></div>
 							<div class="label-background"></div>
 						</a>
-					<?php endif ?>
+					<?php endif?>
 
 				</div> <!-- SINGLE PRODUCT END -->
 
-				<?php } ?>
+				<?php }?>
 
 
 
@@ -208,5 +208,5 @@
 		</div>
 
 
-		<?php require_once 'includes/footer.php'; ?>
+		<?php require_once 'includes/footer.php';?>
 

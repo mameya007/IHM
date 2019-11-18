@@ -1,4 +1,4 @@
-<?php require_once '../core/init.php'; ?>
+<?php require_once '../core/init.php';?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width initial-scale=1.0">
-    <title>Admin panel Bootstrap 4 </title>
+    <title>Admin panel </title>
     <!-- GLOBAL MAINLY STYLES-->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">

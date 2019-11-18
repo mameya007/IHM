@@ -1,20 +1,20 @@
 <?php
-    $admin_email = $_SESSION['admin_email'];
+$admin_email = $_SESSION['admin_email'];
 
-    $get_admin = $getFromU->view_admin_by_email($admin_email);
+$get_admin = $getFromU->view_admin_by_email($admin_email);
 
-    $admin_id = $get_admin->admin_id;
-    $admin_name = $get_admin->admin_name;
-    $admin_image = $get_admin->admin_image;
+$admin_id = $get_admin->admin_id;
+$admin_name = $get_admin->admin_name;
+$admin_image = $get_admin->admin_image;
 
-    $get_products = $getFromU->viewAllFromTable("products");
-    $count_products = count($get_products);
+$get_products = $getFromU->viewAllFromTable("products");
+$count_products = count($get_products);
 
-    $get_customers = $getFromU->viewAllFromTable("customers");
-    $count_customers = count($get_customers);
+$get_customers = $getFromU->viewAllFromTable("customers");
+$count_customers = count($get_customers);
 
-    $get_product_categories = $getFromU->viewAllFromTable("product_categories");
-    $count_product_categories = count($get_product_categories);
+$get_product_categories = $getFromU->viewAllFromTable("product_categories");
+$count_product_categories = count($get_product_categories);
 
 ?>
 
@@ -163,7 +163,7 @@
                     </li>
                     <li class="dropdown dropdown-user">
                         <a class="nav-link dropdown-toggle link" data-toggle="dropdown">
-                            <img src="./assets/img/users/<?php echo $admin_image; ?>" />
+                            <img src="./admin_images/<?php echo $admin_image; ?>" />
                             <span></span><?php echo $admin_name; ?><i class="fa fa-angle-down m-l-5"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-right">
