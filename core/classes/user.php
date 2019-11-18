@@ -72,9 +72,9 @@
   	public function create($table, $fields = array())
   	{
   		$columns = implode(',', array_keys($fields));
-  		$values  = ':'.implode(', :', array_keys($fields));
+      $values  = ':'.implode(', :', array_keys($fields));
   		$sql = "INSERT INTO {$table} ({$columns}) VALUES({$values})";
-  		$stmt = $this->pdo->prepare($sql);
+      $stmt = $this->pdo->prepare($sql);
 
   		if ($stmt) {
   			foreach ($fields as $key => $data) {
