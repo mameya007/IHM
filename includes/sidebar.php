@@ -176,14 +176,7 @@ if (isset($_REQUEST['cat']) && is_array($_REQUEST['cat'])){
             }
         ?>
 
-        <li class="checkbox checkbox-primary form-control mb-2 bg-light">
-          <a>
-            <div class="custom-control custom-checkbox mr-sm-2" style="top: 15px">
-              <input type="checkbox" <?php (isset($aPCat[$p_cat_id])) ? print "checked='checked' " : ""; ?> name="p_cat" value="<?php echo $p_cat_id; ?>" class="custom-control-input get_p_cat" id="p_cat[<?php echo $p_cat_id; ?>]">
-              <label class="custom-control-label" for="p_cat[<?php echo $p_cat_id; ?>]"><span><?php echo $p_cat_image; ?></span> <span><?php echo $p_cat_title; ?></span><br></label>
-            </div>
-          </a>
-        </li>
+
 
         <?php   } ?>
 
