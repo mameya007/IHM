@@ -172,15 +172,15 @@ if ($product_img3 != "") {
 							  </ol>
 							  <div class="carousel-inner">
 							    <div class="carousel-item active">
-							      <img class="d-block w-100 img-fluid" src="admin_area/product_images/<?php echo $product_img1; ?>" alt="First slide">
+							      <img class="d-block w-50 img-fluid mx-auto" src="admin_area/product_images/<?php echo $product_img1; ?>" alt="First slide">
 							    </div>
 							    <div class="carousel-item">
-							      <img class="d-block w-100 img-fluid" src="admin_area/product_images/<?php echo $product_img2; ?>" alt="Second slide">
+							      <img class="d-block w-50 img-fluid mx-auto" src="admin_area/product_images/<?php echo $product_img2; ?>" alt="Second slide">
 							    </div>
 							   <?php
 if ($product_img3 != "") {
                 echo "<div class='carousel-item'>
-								<img class='d-block w-100 img-fluid' src='admin_area/product_images/<?php echo $product_img3; ?>' alt='Third slide'>
+								<img class='d-block w-50 img-fluid mx-auto' src='admin_area/product_images/$product_img3' alt='Third slide'>
 							  </div>"
                 ;
             }
@@ -314,7 +314,7 @@ $view_icons = $getFromU->viewIconsByProductID($the_product_id);
 							<?php
 if ($product_img3 != "") {
                 echo "<div class='col-4'>
-							<a href='#' class='thumb'><img class='img-fluid img-thumbnail' src='admin_area/product_images/ $product_img3;'></a>
+							<a href='#' class='thumb'><img class='img-fluid img-thumbnail' src='admin_area/product_images/$product_img3'></a>
 						</div>"
                 ;
             }
@@ -439,7 +439,7 @@ foreach ($view_products as $view_product) {
 						</div>
 					</div>
 					<?php if (!empty($product_label)): ?>
-						<a class="label sale" style="color: black">
+						<a class="label sale mx-auto" style="color: black">
 							<div class="thelabel"><?php echo $product_label; ?></div>
 							<div class="label-background"></div>
 						</a>
