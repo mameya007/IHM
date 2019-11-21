@@ -1,89 +1,88 @@
 <?php
 
-	// / getProducts function Code Starts ///
+// / getProducts function Code Starts ///
 
-	$aWhere = array();
+$aWhere = array();
 
-	// / Manufacturers Code Starts ///
+// / Manufacturers Code Starts ///
 
-	if (isset($_REQUEST['man']) && is_array($_REQUEST['man']))
-		{
-		foreach($_REQUEST['man'] as $sKey => $sVal)
-			{
-			if ((int)$sVal != 0)
-				{
-				$aWhere[] = 'manufacturer_id=' . (int)$sVal;
-				}
-			}
-		}
+if (isset($_REQUEST['man']) && is_array($_REQUEST['man'])) {
+    foreach ($_REQUEST['man'] as $sKey => $sVal) {
+        if ((int) $sVal != 0) {
+            $aWhere[] = 'manufacturer_id=' . (int) $sVal;
+        }
+    }
+}
 
-	// / Manufacturers Code Ends ///
-	// / Products Categories Code Starts ///
+// / Manufacturers Code Ends ///
+// / Products Categories Code Starts ///
 
-	if (isset($_REQUEST['p_cat']) && is_array($_REQUEST['p_cat']))
-		{
-		foreach($_REQUEST['p_cat'] as $sKey => $sVal)
-			{
-			if ((int)$sVal != 0)
-				{
-				$aWhere[] = 'p_cat_id=' . (int)$sVal;
-				}
-			}
-		}
+if (isset($_REQUEST['p_cat']) && is_array($_REQUEST['p_cat'])) {
+    foreach ($_REQUEST['p_cat'] as $sKey => $sVal) {
+        if ((int) $sVal != 0) {
+            $aWhere[] = 'p_cat_id=' . (int) $sVal;
+        }
+    }
+}
 
-	// / Products Categories Code Ends ///
-	// / Categories Code Starts ///
+// / Products Categories Code Ends ///
+// / Categories Code Starts ///
 
-	if (isset($_REQUEST['cat']) && is_array($_REQUEST['cat']))
-		{
-		foreach($_REQUEST['cat'] as $sKey => $sVal)
-			{
-			if ((int)$sVal != 0)
-				{
-				$aWhere[] = 'cat_id=' . (int)$sVal;
-				}
-			}
-		}
+if (isset($_REQUEST['cat']) && is_array($_REQUEST['cat'])) {
+    foreach ($_REQUEST['cat'] as $sKey => $sVal) {
+        if ((int) $sVal != 0) {
+            $aWhere[] = 'cat_id=' . (int) $sVal;
+        }
+    }
+}
+$prodToSearch = "";
+if (isset($_REQUEST['user_query'])) {
+    $prodToSearch = $_REQUEST['user_query'];
+}
 
-	// / Categories Code Ends ///
+// / Categories Code Ends ///
 
-	$per_page = 6;
+$per_page = 6;
 
-	if (isset($_GET['page'])){
+if (isset($_GET['page'])) {
 
-		$page = $_GET['page'];
+    $page = $_GET['page'];
 
-	} else {
-		$page = 1;
-	}
+} else {
+    $page = 1;
+}
 
-	$start_from = ($page - 1) * $per_page;
-	$sLimit = " order by 1 DESC LIMIT $start_from,$per_page";
-	$sWhere = (count($aWhere) > 0 ? ' WHERE ' . implode(' or ', $aWhere) : '') . $sLimit;
+$start_from = ($page - 1) * $per_page;
+$sLimit = " order by 1 DESC LIMIT $start_from,$per_page";
+if ($prodToSearch != "") {
+    $sWhere = (count($aWhere) > 0 ? ' WHERE ' . implode(' or ', $aWhere) : '') . " where product_title like '%$prodToSearch%'" . $sLimit;
+} else {
+    $sWhere = (count($aWhere) > 0 ? ' WHERE ' . implode(' or ', $aWhere) : '') . $sLimit;
+}
 
-	$get_products = $getFromU->selectAllProducts($sWhere);
+$get_products = $getFromU->selectAllProducts($sWhere);
 
-	foreach ($get_products as $get_product) {
-		$product_id = $get_product->product_id;
-		$product_title = $get_product->product_title;
-		$product_price = $get_product->product_price;
-		$product_img1 = $get_product->product_img1;
-		$product_label   = $get_product->product_label;
-		$manufacturer_id = $get_product->manufacturer_id;
-		$product_psp_price = $get_product->product_psp_price;
+foreach ($get_products as $get_product) {
+    $product_id = $get_product->product_id;
+    $product_title = $get_product->product_title;
+    $product_price = $get_product->product_price;
+    $product_img1 = $get_product->product_img1;
+    $product_label = $get_product->product_label;
+    $manufacturer_id = $get_product->manufacturer_id;
+    $product_psp_price = $get_product->product_psp_price;
 
-		$view_manufacturer = $getFromU->selectManufacturerByManufacturerID($manufacturer_id);
-		$manufacturer_title = $view_manufacturer->manufacturer_title;
+    $view_manufacturer = $getFromU->selectManufacturerByManufacturerID($manufacturer_id);
+    $manufacturer_title = $view_manufacturer->manufacturer_title;
 
-		if ($product_label == "Sale" || $product_label == "Gift") {
-			$product_price = "<del>$$product_price</del>";
-			$product_psp_price = "<i class='fas fa-long-arrow-alt-right'></i> $$product_psp_price";
-		}else{
-			$product_price = "$$product_price";
-			$product_psp_price = "";
-		}
+    if ($product_label == "Sale" || $product_label == "Gift") {
+        $product_price = "<del>$$product_price</del>";
+        $product_psp_price = "<i class='fas fa-long-arrow-alt-right'></i> $$product_psp_price";
+    } else {
+        $product_price = "$$product_price";
+        $product_psp_price = "";
+    }
 
-		?>
+    ?>
 
 
 	<div class="col-sm-6 col-md-4 justify-content-center single">
@@ -111,11 +110,11 @@
 				<div class="thelabel"><?php echo $product_label; ?></div>
 				<div class="label-background"></div>
 			</a>
-		<?php endif ?>
+		<?php endif?>
 
 	</div> <!-- SINGLE PRODUCT END -->
 
-<?php  } // / getProducts function Code Ends /// ?>
+<?php } // / getProducts function Code Ends /// ?>
 
 
 

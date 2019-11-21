@@ -1,19 +1,19 @@
-<?php require_once 'core/init.php'; ?>
+<?php require_once 'core/init.php';?>
 
 <?php
-	$ip_add = $getFromU->getRealUserIp();
-	$total = 0;
-	$records = $getFromU->select_products_by_ip($ip_add);
-	foreach ($records as $record) {
-		$product_id = $record->p_id;
-		$product_price = $record->product_price;
-		$product_qty = $record->qty;
-		$get_prices = $getFromU->viewProductByProductID($product_id);
-		foreach ($get_prices as $get_price) {
-			$sub_total = $product_price * $product_qty;
-			$total += $sub_total;
-		}
-	}
+$ip_add = $getFromU->getRealUserIp();
+$total = 0;
+$records = $getFromU->select_products_by_ip($ip_add);
+foreach ($records as $record) {
+    $product_id = $record->p_id;
+    $product_price = $record->product_price;
+    $product_qty = $record->qty;
+    $get_prices = $getFromU->viewProductByProductID($product_id);
+    foreach ($get_prices as $get_price) {
+        $sub_total = $product_price * $product_qty;
+        $total += $sub_total;
+    }
+}
 ?>
 
 
@@ -25,14 +25,14 @@
 					<div class="col-md-6"> <!-- col-md-6 offer Starts -->
 						<a href="customer/my_account.php" class="btn btn-info btn-sm">
 							<?php
-								if (!isset($_SESSION['customer_email'])) {
-									echo "Welcome : <strong class='text-uppercase'>Guest</strong>";
-								}else {
-									$customer = $getFromU->view_customer_by_email($_SESSION['customer_email']);
-									$customer_name = $customer->customer_name;
-									echo "Welcome : <strong class='text-uppercase'>$customer_name</strong>" ;
-								}
-							?>
+if (!isset($_SESSION['customer_email'])) {
+    echo "Welcome : <strong class='text-uppercase'>Guest</strong>";
+} else {
+    $customer = $getFromU->view_customer_by_email($_SESSION['customer_email']);
+    $customer_name = $customer->customer_name;
+    echo "Welcome : <strong class='text-uppercase'>$customer_name</strong>";
+}
+?>
 						</a>
 
 						<a href="#">Shopping Cart: Sub-Total Price $ <?php echo $total; ?>, Total Items : <?php echo $getFromU->count_product_by_ip($ip_add); ?></a>
@@ -44,13 +44,13 @@
 						<ul class="menu"> <!-- menu starts -->
 							<?php if (!isset($_SESSION['customer_email'])): ?>
 								<li><a href="customer_register.php">Register</a></li>
-							<?php endif ?>
+							<?php endif?>
 
 							<?php if (!isset($_SESSION['customer_email'])): ?>
 								<li><a href="checkout.php">My Account</a></li>
 							<?php else: ?>
 								<li><a href="customer/my_account.php?my_orders">My Account</a></li>
-							<?php endif ?>
+							<?php endif?>
 
 							<li><a href="cart.php">Go To Cart</a></li>
 							<li>
@@ -58,7 +58,7 @@
 									<a href="checkout.php">Login</a>
 								<?php else: ?>
 									<a href="logout.php">Logout</a>
-								<?php endif ?>
+								<?php endif?>
 
 							</li>
 						</ul> <!-- menu ends -->
@@ -71,48 +71,9 @@
 
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" id="navbar">
-	<a class="navbar-brand home" href="#">Navbar</a>
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	<span class="navbar-toggler-icon"></span>
-	</button>
-	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<ul class="navbar-nav mr-auto text-uppercase">
-			<li >
-				<a href="index.php">Home</a>
-			</li>
-			<li>
-				<a href="shop.php">Shop</a>
-			</li>
-
-			<?php if (!isset($_SESSION['customer_email'])): ?>
-				<li><a href="checkout.php">My Account</a></li>
-			<?php else: ?>
-				<li><a href="customer/my_account.php?my_orders">My Account</a></li>
-			<?php endif ?>
-
-			<li>
-				<a class="active" href="cart.php">Shopping Cart</a>
-			</li>
-			<li>
-				<a href="contact.php">Contact Us</a>
-			</li>
-			<li>
-        <a href="about.php">About Us</a>
-      </li>
-      <li>
-        <a href="services.php">Services</a>
-      </li>
-		</ul>
-
-			<a href="cart.php" class="btn btn-success mr-2"><i class="fas fa-shopping-cart"></i><span> <?php echo $getFromU->count_product_by_ip($ip_add); ?> items in Cart</span></a>
-
-		<form class="form-inline my-2 my-lg-0">
-			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="user_query" required="1">
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="search">Search</button>
-		</form>
-	</div>
-</nav>
+		<?php
+require_once 'includes/navbar.php';
+?>
 
 
 <div id="content">
@@ -149,23 +110,23 @@
 								  <tbody>
 
 									<?php
-										$ip_add = $getFromU->getRealUserIp();
-										$total = 0;
-										$records = $getFromU->select_products_by_ip($ip_add);
-										foreach ($records as $record) {
-											$product_id = $record->p_id;
-											$product_qty = $record->qty;
-											$product_price = $record->product_price;
-											$product_size = $record->size;
-											$get_prices = $getFromU->viewProductByProductID($product_id);
-											foreach ($get_prices as $get_price) {
-												$product_img1 = $get_price->product_img1;
-												$product_title = $get_price->product_title;
-												$sub_total = $product_price * $product_qty;
-												$total += $sub_total;
+$ip_add = $getFromU->getRealUserIp();
+$total = 0;
+$records = $getFromU->select_products_by_ip($ip_add);
+foreach ($records as $record) {
+    $product_id = $record->p_id;
+    $product_qty = $record->qty;
+    $product_price = $record->product_price;
+    $product_size = $record->size;
+    $get_prices = $getFromU->viewProductByProductID($product_id);
+    foreach ($get_prices as $get_price) {
+        $product_img1 = $get_price->product_img1;
+        $product_title = $get_price->product_title;
+        $sub_total = $product_price * $product_qty;
+        $total += $sub_total;
 
-												$_SESSION['product_qty'] = $product_qty;
-									?>
+        $_SESSION['product_qty'] = $product_qty;
+        ?>
 
 								    <tr>
 								      <td>
@@ -175,7 +136,7 @@
 								      	<a href="details.php?product_id=<?php echo $product_id; ?>"><?php echo $product_title; ?></a>
 								      </td>
 								      <td>
-												<input type="number" name="quentity" value="<?php echo $_SESSION['product_qty'] ;?>" data-product-id = "<?php echo $product_id; ?>" class="quentity form-control" >
+												<input type="number" name="quentity" value="<?php echo $_SESSION['product_qty']; ?>" data-product-id = "<?php echo $product_id; ?>" class="quentity form-control" >
 								      </td>
 								      <td>$ <?php echo $product_price; ?></td>
 								      <td><?php echo ucwords($product_size); ?></td>
@@ -185,13 +146,13 @@
 									        <label class="custom-control-label" for="checkbox['<?php echo $product_id; ?>']"></label>
 									      </div>
 								      </td>
-								      <td class="text-right">$ <?php echo number_format($sub_total, 2) ; ?></td>
+								      <td class="text-right">$ <?php echo number_format($sub_total, 2); ?></td>
 								    </tr>
-									<?php } } ?>
+									<?php }}?>
 
 								    <tr>
 								    	<th class="text-right" colspan="6"> Total </th>
-								    	<th class="text-right" colspan="1"> $ <?php echo number_format($total, 2) ; ?></th>
+								    	<th class="text-right" colspan="1"> $ <?php echo number_format($total, 2); ?></th>
 								    </tr>
 
 
@@ -221,20 +182,20 @@
 				    </form> <!-- Form End -->
 
 				    <?php
-							if (isset($_POST['update']) && !empty($_POST['update'])) {
-								if (!empty($_POST['remove'])) {
-									$product_ids = $_POST['remove'];
-									foreach ($product_ids as $product_id) {
-									 $delete_id = $getFromU->delete_from_cart_by_id($product_id);
-								  }
-									if ($delete_id) {
-										//header('Location: cart.php');
-										echo '<script>alert("Item(s) Deleted Sucessfully")</script>';
-										echo '<script>window.open("cart.php", "_self")</script>';
-									}
-								}
-							}
-						?>
+if (isset($_POST['update']) && !empty($_POST['update'])) {
+    if (!empty($_POST['remove'])) {
+        $product_ids = $_POST['remove'];
+        foreach ($product_ids as $product_id) {
+            $delete_id = $getFromU->delete_from_cart_by_id($product_id);
+        }
+        if ($delete_id) {
+            //header('Location: cart.php');
+            echo '<script>alert("Item(s) Deleted Sucessfully")</script>';
+            echo '<script>window.open("cart.php", "_self")</script>';
+        }
+    }
+}
+?>
 				  </div>
 				</div>
 			</div> <!-- col-md-9 End -->
@@ -287,27 +248,27 @@
 
 	  <div class="row">
 	  	<?php
-	  		$random_products = $getFromU->select_random_products();
-	  		foreach ($random_products as $random_product) {
-	  			$product_title = $random_product->product_title;
-	  			$product_id = $random_product->product_id;
-	  			$product_img1 = $random_product->product_img1;
-	  			$product_price = $random_product->product_price;
-	  			$product_label   = $random_product->product_label;
-					$manufacturer_id = $random_product->manufacturer_id;
-					$product_psp_price = $random_product->product_psp_price;
+$random_products = $getFromU->select_random_products();
+foreach ($random_products as $random_product) {
+    $product_title = $random_product->product_title;
+    $product_id = $random_product->product_id;
+    $product_img1 = $random_product->product_img1;
+    $product_price = $random_product->product_price;
+    $product_label = $random_product->product_label;
+    $manufacturer_id = $random_product->manufacturer_id;
+    $product_psp_price = $random_product->product_psp_price;
 
-					$view_manufacturer = $getFromU->selectManufacturerByManufacturerID($manufacturer_id);
-					$manufacturer_title = $view_manufacturer->manufacturer_title;
+    $view_manufacturer = $getFromU->selectManufacturerByManufacturerID($manufacturer_id);
+    $manufacturer_title = $view_manufacturer->manufacturer_title;
 
-					if ($product_label == "Sale" || $product_label == "Gift") {
-						$product_price = "<del>$$product_price</del>";
-						$product_psp_price = "<i class='fas fa-long-arrow-alt-right'></i> $$product_psp_price";
-					}else{
-						$product_price = "$$product_price";
-						$product_psp_price = "";
-					}
-	  	?>
+    if ($product_label == "Sale" || $product_label == "Gift") {
+        $product_price = "<del>$$product_price</del>";
+        $product_psp_price = "<i class='fas fa-long-arrow-alt-right'></i> $$product_psp_price";
+    } else {
+        $product_price = "$$product_price";
+        $product_psp_price = "";
+    }
+    ?>
 	  	<div class="col-sm-6 col-md-3 justify-content-center single">
 				<div class="product mb-4">
 					<div class="card">
@@ -332,10 +293,10 @@
 						<div class="thelabel"><?php echo $product_label; ?></div>
 						<div class="label-background"></div>
 					</a>
-				<?php endif ?>
+				<?php endif?>
 			</div> <!-- SINGLE PRODUCT END -->
 
-		<?php } ?>
+		<?php }?>
 
 	  </div> <!-- SINGLE PRODUCT ROW END -->
 
