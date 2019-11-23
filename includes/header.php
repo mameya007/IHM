@@ -33,7 +33,7 @@ foreach ($records as $record) {
     <!-- <link rel="stylesheet" type="text/css" href="assets/css/theme.css"> -->
 
     <script src='https://www.google.com/recaptcha/api.js'></script>
-
+	<script src="assets/css/number.css"></script>
     <title>eCommerce Store</title>
   </head>
   <body>

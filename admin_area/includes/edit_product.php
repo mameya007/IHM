@@ -22,6 +22,8 @@
 		$the_product_img3 = $view_product->product_img3;
 		$product_label 		= $view_product->product_label;
 		$the_status 		  = $view_product->status;
+		$colors = $view_product->colors;
+		$sizes = $view_product->sizes;
 
 		$view_p_category 	= $getFromU->view_All_By_p_cat_ID($p_cat_id);
 		$the_p_cat_title 	= $view_p_category->p_cat_title;
@@ -50,6 +52,8 @@
 		$product_keywords = $_POST['product_keywords'];
 		$product_label    = $_POST['product_label'];
 		$status    				= $_POST['status'];
+		$colors = $_POST['colors'];
+		$sizes = $_POST['sizes'];
 
 		$product_img1 		= $_FILES['product_img1']['name'];
 		$product_img2 		= $_FILES['product_img2']['name'];
@@ -73,7 +77,7 @@
 		move_uploaded_file($temp_name2, "product_images/$product_img2");
 		move_uploaded_file($temp_name3, "product_images/$product_img3");
 
-		$update_product = $getFromU->update_product("products",$product_id, array("p_cat_id" => $product_cat, "cat_id" => $cat_id, "manufacturer_id" => $manufacturer_id, "add_date" => date("Y-m-d H:i:s"), "product_title" => $product_title, "product_img1" => $product_img1,"product_img2" => $product_img2, "product_img3" => $product_img3, "product_price" => $product_price, "product_psp_price" => $product_psp_price, "product_desc" => $product_desc, "product_features" => $product_features, "product_video" => $product_video, "product_keywords" => $product_keywords, "product_label" => $product_label, "status" => $status));
+		$update_product = $getFromU->update_product("products",$product_id, array("p_cat_id" => $product_cat, "cat_id" => $cat_id, "manufacturer_id" => $manufacturer_id, "add_date" => date("Y-m-d H:i:s"), "product_title" => $product_title, "product_img1" => $product_img1,"product_img2" => $product_img2, "product_img3" => $product_img3, "product_price" => $product_price, "product_psp_price" => $product_psp_price, "product_desc" => $product_desc, "product_features" => $product_features, "product_video" => $product_video, "product_keywords" => $product_keywords, "product_label" => $product_label, "status" => $status, "colors" => $colors, "sizes" => $sizes));
 
 		if ($update_product) {
 			$_SESSION['product_update_msg'] = "Product has been Updated Sucessfully";
@@ -232,6 +236,31 @@
 				      </div>
 				    </div>
 				  </div>
+					
+				  <div class="form-row mb-3">
+				    <div class="col-3">
+				      <label for="colors">Colors</label>
+				    </div>
+				    <div class="col-md-9">
+				    	<input type="text" name="colors" class="form-control" id="colors" value="<?php echo $colors; ?>" placeholder="colors" required>
+				      <div class="invalid-feedback">
+				        Please provide a Product colors.
+				      </div>
+				    </div>
+				  </div> 
+				  
+				  <div class="form-row mb-3">
+				    <div class="col-3">
+				      <label for="sizes">Sizes</label>
+				    </div>
+				    <div class="col-md-9">
+				    	<input type="text" name="sizes" class="form-control" id="sizes" value="<?php echo $sizes; ?>" placeholder="sizes" required>
+				      <div class="invalid-feedback">
+				        Please provide a Product sizes.
+				      </div>
+				    </div>
+				  </div>
+
 
 					<div class="form-row mb-3">
 				    <div class="col-md-3">
