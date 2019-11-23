@@ -3,7 +3,9 @@
 ========================================================================== */
 
 /* General Styles */
-
+.dropdown-menu > li {
+  width: 300px;
+}
 .dropdown-submenu {
   position: relative;
 }

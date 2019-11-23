@@ -12,8 +12,9 @@ if (isset($_REQUEST['man']) && is_array($_REQUEST['man'])) {
             $aWhere[] = 'manufacturer_id=' . (int) $sVal;
         }
     }
+} else if (isset($_REQUEST['man'])) {
+    $aWhere[] = 'manufacturer_id=' . (int) $_REQUEST['man'];
 }
-
 // / Manufacturers Code Ends ///
 // / Products Categories Code Starts ///
 
@@ -23,6 +24,8 @@ if (isset($_REQUEST['p_cat']) && is_array($_REQUEST['p_cat'])) {
             $aWhere[] = 'p_cat_id=' . (int) $sVal;
         }
     }
+} else if (isset($_REQUEST['p_cat'])) {
+    $aWhere[] = 'p_cat_id=' . (int) $_REQUEST['p_cat'];
 }
 
 // / Products Categories Code Ends ///
@@ -34,6 +37,8 @@ if (isset($_REQUEST['cat']) && is_array($_REQUEST['cat'])) {
             $aWhere[] = 'cat_id=' . (int) $sVal;
         }
     }
+} else if (isset($_REQUEST['cat'])) {
+    $aWhere[] = 'cat_id=' . (int) $_REQUEST['cat'];
 }
 $prodToSearch = "";
 if (isset($_REQUEST['user_query'])) {

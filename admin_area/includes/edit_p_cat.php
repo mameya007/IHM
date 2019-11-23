@@ -1,40 +1,39 @@
-<?php require_once 'includes/header.php'; ?>
+<?php require_once 'includes/header.php';?>
 
 <?php
 
-	if (isset($_GET['edit_p_cat'])) {
-		$p_cat_id 			= $_GET['edit_p_cat'];
+if (isset($_GET['edit_p_cat'])) {
+    $p_cat_id = $_GET['edit_p_cat'];
 
-		$view_p_category 	= $getFromU->view_All_By_p_cat_ID($p_cat_id);
-		$p_cat_title 	= $view_p_category->p_cat_title;
-		$p_cat_top 	= $view_p_category->p_cat_top;
-		$p_cat_image 	= $view_p_category->p_cat_image;
-	}
+    $view_p_category = $getFromU->view_All_By_p_cat_ID($p_cat_id);
+    $p_cat_title = $view_p_category->p_cat_title;
+    $p_cat_top = $view_p_category->p_cat_top;
+    $p_cat_image = $view_p_category->p_cat_image;
+}
 
 ?>
 
 <?php
 
-	if (isset($_POST['update_p_cat'])) {
-		$p_cat_title 		= $_POST['p_cat_title'];
-		$p_cat_top 			= $_POST['p_cat_top'];
-		$p_cat_id 			= $_POST['p_cat_id'];
+if (isset($_POST['update_p_cat'])) {
+    $p_cat_title = $_POST['p_cat_title'];
+    $p_cat_top = $_POST['p_cat_top'];
+    $p_cat_id = $_POST['p_cat_id'];
 
-		$p_cat_image = $_FILES['p_cat_image']['name'];
-		$temp_name = $_FILES['p_cat_image']['tmp_name'];
+    $p_cat_image = $_FILES['p_cat_image']['name'];
+    $temp_name = $_FILES['p_cat_image']['tmp_name'];
 
+    move_uploaded_file($temp_name, "other_images/$p_cat_image");
 
-		move_uploaded_file($temp_name, "other_images/$p_cat_image");
+    $update_p_cat = $getFromU->update_p_cat("product_categories", $p_cat_id, array("p_cat_title" => $p_cat_title, "p_cat_top" => $p_cat_top, "p_cat_image" => $p_cat_image));
 
-		$update_p_cat = $getFromU->update_p_cat("product_categories",$p_cat_id, array("p_cat_title" => $p_cat_title, "p_cat_top" => $p_cat_top, "p_cat_image" => $p_cat_image));
-
-		if ($update_p_cat) {
-			$_SESSION['product_update_msg'] = "Product Category has been Updated Sucessfully";
-			header('Location: index.php?view_p_cats');
-		}else {
-			echo '<script>alert("Product has not added")</script>';
-		}
-	}
+    if ($update_p_cat) {
+        $_SESSION['product_update_msg'] = "Product Category has been Updated Sucessfully";
+        header('Location: index.php?view_p_cats');
+    } else {
+        echo '<script>alert("Product has not added")</script>';
+    }
+}
 
 ?>
 
@@ -77,11 +76,11 @@
 				    </div>
 				    <div class="col-md-9">
 				    	<div class="custom-control custom-radio custom-control-inline">
-							  <input type="radio" id="radio1" name="p_cat_top" value="Yes" <?php ($p_cat_top === "Yes") ? print "checked='checked' " : ""; ?> class="custom-control-input" required>
+							  <input type="radio" id="radio1" name="p_cat_top" value="Yes" <?php ($p_cat_top === "Yes") ? print "checked='checked' " : "";?> class="custom-control-input" required>
 							  <label class="custom-control-label" for="radio1">Yes</label>
 							</div>
 							<div class="custom-control custom-radio custom-control-inline">
-							  <input type="radio" id="radio2" name="p_cat_top" value="No" <?php ($p_cat_top === "No") ? print "checked='checked' " : ""; ?> class="custom-control-input" required>
+							  <input type="radio" id="radio2" name="p_cat_top" value="No" <?php ($p_cat_top === "No") ? print "checked='checked' " : "";?> class="custom-control-input" required>
 							  <label class="custom-control-label" for="radio2">No</label>
 							</div>
 				    </div>
@@ -92,7 +91,7 @@
 				      <label for="p_cat_image">Product Category Image</label>
 				    </div>
 				    <div class="col-md-9">
-				    	<input type="file" name="p_cat_image" value="<?php echo $p_cat_image; ?>" id="p_cat_image" required>
+				    	<input type="file" name="p_cat_image" value="<?php echo $p_cat_image; ?>" id="p_cat_image">
 				      <div class="invalid-feedback">
 				        Please provide a Product Category Image.
 				      </div>
@@ -135,5 +134,5 @@
 
 
 
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once 'includes/footer.php';?>
 

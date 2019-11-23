@@ -27,7 +27,7 @@ foreach ($slides as $slide) {
     $slide_url = $slide->slide_url;
     ?>
 					  	 <div class="carousel-item active">
-					      <a href="<?php echo $slide_url; ?>" target="_blank"><img class="d-block w-100 img-fluid" src="admin_area/slides_images/<?php echo $slide_image; ?>" alt="<?php echo $slide_name; ?>"></a>
+					      <a target="_blank"><img class="d-block w-100 img-fluid" src="admin_area/slides_images/<?php echo $slide_image; ?>" alt="<?php echo $slide_name; ?>"></a>
 					      <div class="carousel-caption d-none d-md-block">
 							    <h5><?php echo $slide_title; ?></h5>
 							    <p><?php echo $slide_text; ?></p>
@@ -46,7 +46,7 @@ foreach ($slides as $slide) {
     $slide_url = $slide->slide_url;
     ?>
 					  	 <div class="carousel-item">
-					      <a href="<?php echo $slide_url; ?>" target="_blank"><img class="d-block w-100 img-fluid" src="admin_area/slides_images/<?php echo $slide_image; ?>" alt="<?php echo $slide_name; ?>"></a>
+					      <a  target="_blank"><img class="d-block w-100 img-fluid" src="admin_area/slides_images/<?php echo $slide_image; ?>" alt="<?php echo $slide_name; ?>"></a>
 					      <div class="carousel-caption d-none d-md-block">
 							    <h5><?php echo $slide_title; ?></h5>
 							    <p><?php echo $slide_text; ?></p>

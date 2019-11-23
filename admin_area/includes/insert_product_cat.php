@@ -1,26 +1,25 @@
-<?php require_once 'includes/header.php'; ?>
+<?php require_once 'includes/header.php';?>
 <?php
-	if (isset($_POST['add_p_cat'])) {
-		$p_cat_title = $getFromU->checkInput($_POST['p_cat_title']);
-		$p_cat_top = $getFromU->checkInput($_POST['p_cat_top']);
+if (isset($_POST['add_p_cat'])) {
+    $p_cat_title = $getFromU->checkInput($_POST['p_cat_title']);
+    $p_cat_top = $getFromU->checkInput($_POST['p_cat_top']);
 
-		$p_cat_image = $_FILES['p_cat_image']['name'];
-		$temp_name = $_FILES['p_cat_image']['tmp_name'];
+    $p_cat_image = $_FILES['p_cat_image']['name'];
+    $temp_name = $_FILES['p_cat_image']['tmp_name'];
 
-		move_uploaded_file($temp_name, "other_images/$p_cat_image");
+    move_uploaded_file($temp_name, "other_images/$p_cat_image");
 
-		$insert_product_cat = $getFromU->create("product_categories", array("p_cat_title" => $p_cat_title, "p_cat_top" => $p_cat_top, "p_cat_image" => $p_cat_image));
+    $insert_product_cat = $getFromU->create("product_categories", array("p_cat_title" => $p_cat_title, "p_cat_top" => $p_cat_top, "p_cat_image" => $p_cat_image));
 
-		if ($insert_product_cat) {
-			$_SESSION['insert_product_cat_msg'] = "Product Category has been added Sucessfully";
-			header('Location: index.php?view_p_cats');
+    if ($insert_product_cat) {
+        $_SESSION['insert_product_cat_msg'] = "Product Category has been added Sucessfully";
+        header('Location: index.php?view_p_cats');
 
-		}else {
-			echo '<script>alert("Product Category has not added")</script>';
-		}
+    } else {
+        echo '<script>alert("Product Category has not added")</script>';
+    }
 
-
-	}
+}
 
 ?>
 
@@ -74,7 +73,7 @@
 				      <label for="p_cat_image">Product Category Image</label>
 				    </div>
 				    <div class="col-md-9">
-				    	<input type="file" name="p_cat_image" id="p_cat_image" required>
+				    	<input type="file" name="p_cat_image" id="p_cat_image">
 				      <div class="invalid-feedback">
 				        Please provide a Category Image.
 				      </div>
@@ -117,5 +116,5 @@
 
 
 
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once 'includes/footer.php';?>
 

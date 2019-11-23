@@ -15,36 +15,36 @@
 <div class="container">
 	<div class="row">
         <div class="dropdown">
-            <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="shop.php">
+            <a id="dLabel" role="button"  data-toggle="dropdown" data-hover="dropdown" data-target="#" href="#">
                 SHOP <span class="caret"></span>
             </a>
     		<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-				<li><a href="shop.php">SHOP</a></li>
+				<li><a href="shop.php">ALL</a></li>
 			<li class="dropdown-submenu">
-                <a tabindex="-1" href="#">MEN</a>
+				<a tabindex="-1" href="shop.php?cat=1">MEN</a>
                 <ul class="dropdown-menu">
-                  <li> <a href="#">Sneakers</a></li>
-                  <li><a href="#">Derbies et Richelieus</a></li>
-                  <li><a href="#">Mocassins et chassueres bateau</a></li>
-                  <li><a href="#">Sandales</a></li>
+                  <li> <a href="shop.php?p_cat=1">Sneakers</a></li>
+                  <li><a href="shop.php?p_cat=2">Derbies et Richelieus</a></li>
+                  <li><a href="shop.php?p_cat=3">Mocassins et chassueres bateau</a></li>
+                  <li><a href="shop.php?p_cat=4">Sandales</a></li>
                 </ul>
 			  </li>
 			  <li class="dropdown-submenu">
-                <a tabindex="-1" href="#">WOMEN</a>
+                <a tabindex="-1" href="shop.php?cat=2">WOMEN</a>
                 <ul class="dropdown-menu">
-                  <li> <a href="#">Chaussure à Talons</a></li>
-                  <li><a href="#">Bottes</a></li>
-                  <li><a href="#">Derbies</a></li>
-                  <li><a href="#">Mocassins</a></li>
+                  <li> <a href="shop.php?p_cat=5">Chaussure à Talons</a></li>
+                  <li><a href="shop.php?p_cat=6">Bottes</a></li>
+                  <li><a href="shop.php?p_cat=7">Derbies</a></li>
+                  <li><a href="shop.php?p_cat=8">Mocassins</a></li>
                 </ul>
               </li>
               <li class="dropdown-submenu">
-                <a tabindex="-1" href="#">KIDS</a>
+                <a tabindex="-1" href="shop.php?cat=3">KIDS</a>
                 <ul class="dropdown-menu">
-                  <li> <a href="#">Chaussures de ville</a></li>
-                  <li><a href="#">Chassures pour bébé</a></li>
-				  <li><a href="#">Chassures de sport</a></li>
-				  <li><a href="#">Chassures de neige</a></li>
+                  <li> <a href="shop.php?p_cat=9">Chaussures de ville</a></li>
+                  <li><a href="shop.php?p_cat=10">Chaussures pour bébé</a></li>
+				  <li><a href="shop.php?p_cat=11">Chaussures de sport</a></li>
+				  <li><a href="shop.php?p_cat=12">Chaussures de neige</a></li>
                 </ul>
               </li>
             </ul>
