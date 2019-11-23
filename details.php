@@ -159,7 +159,7 @@ if ($product_img3 != "") {
 							</div>
 						</div>
 						<?php if (!empty($product_label)): ?>
-							<a class="label sale" style="color: black">
+							<a style="margin-left: 134px;" class="label sale" style="color: black">
 								<div class="thelabel"><?php echo $product_label; ?></div>
 								<div class="label-background"></div>
 							</a>
@@ -206,7 +206,7 @@ if ($product_img3 != "") {
             ?>
 								<form method="post">
 									<div class="form-group row">
-								    <label for="product_qty" class="col-sm-5 col-form-label-sm text-xl-right"><?php echo $title; ?> Quantity</label>
+								    <label for="product_qty" class="col-sm-5 col-form-label-sm text-xl-right"><?php echo $status; ?> Quantity</label>
 								    <div class="col-sm-7">
 								      <select name="product_qty" id="product_qty" class="form-control">
 								      	<option value="1">1</option>
@@ -220,7 +220,7 @@ if ($product_img3 != "") {
 								  </div>
 
 								  <div class="form-group row">
-								    <label for="product_size" class="col-sm-5 col-form-label-sm text-xl-right"><?php echo $title; ?> Size</label>
+								    <label for="product_size" class="col-sm-5 col-form-label-sm text-xl-right"><?php echo $status; ?> Size</label>
 								    <div class="col-sm-7">
 								      <select name="product_size" id="product_size" class="form-control" required>
 								      	<option value="">--- Select a Size ---</option>
@@ -294,18 +294,18 @@ if ($product_img3 != "") {
 
 								<ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
 								  <li class="nav-item">
-								    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><?php echo $title; ?> Description</a>
+								    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><?php echo $status; ?> Description</a>
 								  </li>
 								  <li class="nav-item">
-								    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><?php echo $title; ?> Fearures</a>
+								    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><?php echo $status; ?> Fearures</a>
 								  </li>
 								  <li class="nav-item">
-								    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><?php echo $title; ?> Video</a>
+								    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><?php echo $status; ?> Video</a>
 								  </li>
 								</ul>
 								<div class="tab-content" id="myTabContent">
 								  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-										<h5 class="card-title"><?php echo $title; ?> Details</h5>
+										<h5 class="card-title"><?php echo $status; ?> Details</h5>
 								    <p class="card-text"><?php echo $product_desc; ?></p>
 								    <h5 class="card-title">Size &amp Fit</h5>
 								    <ul>
@@ -316,11 +316,11 @@ if ($product_img3 != "") {
 								    </ul>
 								  </div>
 								  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-								  	<h5 class="card-title"><?php echo $title; ?> Fearures</h5>
+								  	<h5 class="card-title"><?php echo $status; ?> Fearures</h5>
 								    <p class="card-text"><?php echo $product_features; ?></p>
 								  </div>
 								  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-								  	<h5 class="card-title"><?php echo $title; ?> Video</h5>
+								  	<h5 class="card-title"><?php echo $status; ?> Video</h5>
 								    <p class="card-text text-center"><?php echo $product_video; ?></p>
 								  </div>
 								</div>
