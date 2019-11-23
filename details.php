@@ -205,19 +205,18 @@ if ($product_img3 != "") {
 
             ?>
 								<form method="post">
-									<div class="form-group row">
-								    <label for="product_qty" class="col-sm-5 col-form-label-sm text-xl-right"><?php echo $status; ?> Quantity</label>
-								    <div class="col-sm-7">
-								      <select name="product_qty" id="product_qty" class="form-control">
-								      	<option value="1">1</option>
-								      	<option value="2">2</option>
-								      	<option value="3">3</option>
-								      	<option value="4">4</option>
-								      	<option value="5">5</option>
-								      	<option value="6">6</option>
-								      </select>
-								    </div>
-								  </div>
+								  
+								  <div class="form-row mb-3">
+				    				<div class="col-3">
+				      				<label for="product_qty">Quantity</label>
+				    				</div>
+				    				<div class="col-md-9 quantity">
+				    					<input type="number" name="product_qty" id="product_qty" value="<?php echo $product_qty; ?>" placeholder="product_qty" required>
+				      						<div class="invalid-feedback">
+				        						Please provide a Product quantity.
+				      						</div>
+				    				</div>
+				  				</div> 
 
 								  <div class="form-group row">
 								    <label for="product_size" class="col-sm-5 col-form-label-sm text-xl-right"><?php echo $status; ?> Size</label>

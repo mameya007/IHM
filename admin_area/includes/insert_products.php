@@ -12,7 +12,9 @@ if (isset($_POST['submit'])) {
     $product_video = $_POST['product_video'];
     $product_keywords = $_POST['product_keywords'];
     $product_label = $_POST['product_label'];
-    $status = 'product';
+	$status = 'product';
+	$colors = $_POST['colors'];
+	$sizes = $_POST['sizes'];
 
     $product_img1 = $_FILES['product_img1']['name'];
     $product_img2 = $_FILES['product_img2']['name'];
@@ -26,7 +28,7 @@ if (isset($_POST['submit'])) {
     move_uploaded_file($temp_name2, "product_images/$product_img2");
     move_uploaded_file($temp_name3, "product_images/$product_img3");
 
-    $insert_product = $getFromU->create("products", array("p_cat_id" => $product_cat, "cat_id" => $cat_id, "manufacturer_id" => $manufacturer_id, "add_date" => date("Y-m-d H:i:s"), "product_title" => $product_title, "product_img1" => $product_img1, "product_img2" => $product_img2, "product_img3" => $product_img3, "product_price" => $product_price, "product_psp_price" => $product_psp_price, "product_desc" => $product_desc, "product_features" => $product_features, "product_video" => $product_video, "product_keywords" => $product_keywords, "product_label" => $product_label, "status" => $status));
+    $insert_product = $getFromU->create("products", array("p_cat_id" => $product_cat, "cat_id" => $cat_id, "manufacturer_id" => $manufacturer_id, "add_date" => date("Y-m-d H:i:s"), "product_title" => $product_title, "product_img1" => $product_img1, "product_img2" => $product_img2, "product_img3" => $product_img3, "product_price" => $product_price, "product_psp_price" => $product_psp_price, "product_desc" => $product_desc, "product_features" => $product_features, "product_video" => $product_video, "product_keywords" => $product_keywords, "product_label" => $product_label, "status" => $status, "colors" => $colors, "sizes" => $sizes));
     if ($insert_product) {
         echo '<script>alert("Product has been added Sucessfully")</script>';
         echo '<script>window.open("index.php?add_product", "self")</script>';
@@ -169,6 +171,30 @@ foreach ($categories as $category) {
 				      </div>
 				    </div>
 				  </div>
+
+				  <div class="form-row mb-3">
+				    <div class="col-3">
+				      <label for="colors">Colors</label>
+				    </div>
+				    <div class="col-md-9">
+				    	<input type="text" name="colors" class="form-control" id="colors" placeholder="colors" required>
+				      <div class="invalid-feedback">
+				        Please provide a colors.
+				      </div>
+				    </div>
+				  </div>
+				  <div class="form-row mb-3">
+				    <div class="col-3">
+				      <label for="sizes">sizes</label>
+				    </div>
+				    <div class="col-md-9">
+				    	<input type="text" name="sizes" class="form-control" id="sizes" placeholder="sizes" required>
+				      <div class="invalid-feedback">
+				        Please provide a sizes.
+				      </div>
+				    </div>
+				  </div>
+				  
 
 					<div class="form-row mb-3">
 				    <div class="col-md-3">

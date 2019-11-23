@@ -98,5 +98,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/data_load.js"></script>
+	<script src="assets/js/bootstrap-number.js"></script>
+	<script>
+    $("input[type='number']").inputSpinner()
+	</script>
   </body>
 </html>

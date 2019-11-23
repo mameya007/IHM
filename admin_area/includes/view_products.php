@@ -57,8 +57,12 @@
                         <th>Keywords</th>
                         <th>Status</th>
                         <th>Date</th>
+                        <th>Colors</th>
+                        <th>Sizes</th>
                         <th>Edit</th>
                         <th>Delete</th>
+                        
+                        
                     </tr>
                 </thead>
                 <tfoot><tr></tr></tfoot>
@@ -75,6 +79,8 @@
                             $status = $view_product->status;
                             $product_label = $view_product->product_label;
                             $add_date = $view_product->add_date;
+                            $colors = $view_product->colors;
+                            $sizes = $view_product->sizes;
                             $product_sold = $getFromU->countFromTableByProductID('pending_orders', $product_id);
                     ?>
 
@@ -89,13 +95,15 @@
                         <td><?php echo $product_keywords; ?></td>
                         <td><?php echo ucwords($status); ?></td>
                         <td><?php echo $add_date; ?></td>
+                        <td><?php echo $colors; ?></td>
+                        <td><?php echo $sizes; ?></td>
                         <td>
                             <a class="text-info" href="index.php?edit_product=<?php echo $product_id; ?>"><i class="fas fa-edit"></i> Edit</a>
                         </td>
                         <td>
                             <a class="text-danger" onclick="DeleteProduct('<?php echo $product_id; ?>')"><i class="fas fa-trash-alt"></i> Delete</a>
                         </td>
-
+                    
                     </tr>
 
                     <?php } ?>
