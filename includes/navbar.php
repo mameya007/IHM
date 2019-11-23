@@ -3,14 +3,57 @@
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	<span class="navbar-toggler-icon"></span>
 	</button>
+
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto text-uppercase">
 			<li >
 				<a href="index.php">Home</a>
 			</li>
+
 			<li>
-				<a class="active" href="shop.php">Shop</a>
+
+<div class="container">
+	<div class="row">
+        <div class="dropdown">
+            <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="shop.php">
+                SHOP <span class="caret"></span>
+            </a>
+    		<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+				<li><a href="shop.php">SHOP</a></li>
+			<li class="dropdown-submenu">
+                <a tabindex="-1" href="#">MEN</a>
+                <ul class="dropdown-menu">
+                  <li> <a href="#">Sneakers</a></li>
+                  <li><a href="#">Derbies et Richelieus</a></li>
+                  <li><a href="#">Mocassins et chassueres bateau</a></li>
+                  <li><a href="#">Sandales</a></li>
+                </ul>
+			  </li>
+			  <li class="dropdown-submenu">
+                <a tabindex="-1" href="#">WOMEN</a>
+                <ul class="dropdown-menu">
+                  <li> <a href="#">Chaussure à Talons</a></li>
+                  <li><a href="#">Bottes</a></li>
+                  <li><a href="#">Derbies</a></li>
+                  <li><a href="#">Mocassins</a></li>
+                </ul>
+              </li>
+              <li class="dropdown-submenu">
+                <a tabindex="-1" href="#">KIDS</a>
+                <ul class="dropdown-menu">
+                  <li> <a href="#">Chaussures de ville</a></li>
+                  <li><a href="#">Chassures pour bébé</a></li>
+				  <li><a href="#">Chassures de sport</a></li>
+				  <li><a href="#">Chassures de neige</a></li>
+                </ul>
+              </li>
+            </ul>
+        </div>
+	</div>
+</div>
+				<!-- <a href="shop.php">SHOP</a> -->
 			</li>
+
 			<?php if (!isset($_SESSION['customer_email'])): ?>
 				<li><a href="checkout.php">My Account</a></li>
 			<?php else: ?>

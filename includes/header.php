@@ -28,7 +28,7 @@ foreach ($records as $record) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-  <!--   <link rel="stylesheet" type="text/css" href="assets/css/normalize.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="assets/css/normalize.css"> -->
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
     <!-- <link rel="stylesheet" type="text/css" href="assets/css/theme.css"> -->
 
