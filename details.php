@@ -55,7 +55,8 @@ if (isset($_GET['product_id'])) {
         $product_features = $get_product->product_features;
         $product_video = $get_product->product_video;
         $status = $get_product->status;
-
+		$sizes=$get_product->sizes;
+		
         $view_manufacturer = $getFromU->selectManufacturerByManufacturerID($manufacturer_id);
         $manufacturer_title = $view_manufacturer->manufacturer_title;
 
@@ -211,7 +212,7 @@ if ($product_img3 != "") {
 				      				<label for="product_qty">Quantity</label>
 				    				</div>
 				    				<div class="col-md-9 quantity">
-				    					<input type="number" name="product_qty" id="product_qty" value="<?php echo $product_qty; ?>" placeholder="product_qty" required>
+				    					<input type="number"  min ="1"  name="product_qty" id="product_qty" value="<?php echo $product_qty; ?>" placeholder="1" required>
 				      						<div class="invalid-feedback">
 				        						Please provide a Product quantity.
 				      						</div>
@@ -221,12 +222,17 @@ if ($product_img3 != "") {
 								  <div class="form-group row">
 								    <label for="product_size" class="col-sm-5 col-form-label-sm text-xl-right"><?php echo $status; ?> Size</label>
 								    <div class="col-sm-7">
-								      <select name="product_size" id="product_size" class="form-control" required>
-								      	<option value="">--- Select a Size ---</option>
-								      	<option value="small">Small</option>
-								      	<option value="medium">Medium</option>
-								      	<option value="large">Large</option>
-								      	<option value="extra large">Extra Large</option>
+								      <select style="text-align-last: center;" name="product_size" id="product_size" class="form-control" required>
+
+									  <?php 
+									 $ex=explode(",",$sizes);
+									foreach($ex as $taille){
+										echo "
+										<option  value='$taille'>$taille</option>";
+									}
+
+										?>
+								      	
 								      </select>
 								    </div>
 								  </div>
