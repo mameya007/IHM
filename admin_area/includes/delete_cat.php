@@ -1,6 +1,4 @@
-<?php require_once realpath($_SERVER["DOCUMENT_ROOT"]) . '../../core/init.php';?>
-
-<?php
+<?php include '../../core/init.php';
 
 if (isset($_GET['cat_id'])) {
     $cat_id = $_GET['cat_id'];
@@ -14,4 +12,3 @@ if (isset($_GET['cat_id'])) {
     }
 
 }
-?>

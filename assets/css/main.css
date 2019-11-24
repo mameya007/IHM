@@ -3,6 +3,10 @@
 ========================================================================== */
 
 /* General Styles */
+.thumb img {
+  width: 180px !important;
+  height: 200px !important;
+}
 .dropdown-menu > li {
   width: 300px;
 }
