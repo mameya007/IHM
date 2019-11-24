@@ -55,8 +55,8 @@ if (isset($_GET['product_id'])) {
         $product_features = $get_product->product_features;
         $product_video = $get_product->product_video;
         $status = $get_product->status;
-		$sizes=$get_product->sizes;
-		
+        $sizes = $get_product->sizes;
+
         $view_manufacturer = $getFromU->selectManufacturerByManufacturerID($manufacturer_id);
         $manufacturer_title = $view_manufacturer->manufacturer_title;
 
@@ -206,7 +206,7 @@ if ($product_img3 != "") {
 
             ?>
 								<form method="post">
-								  
+
 								  <div class="form-row mb-3">
 				    				<div class="col-3">
 				      				<label for="product_qty">Quantity</label>
@@ -217,22 +217,22 @@ if ($product_img3 != "") {
 				        						Please provide a Product quantity.
 				      						</div>
 				    				</div>
-				  				</div> 
+				  				</div>
 
 								  <div class="form-group row">
 								    <label for="product_size" class="col-sm-5 col-form-label-sm text-xl-right"><?php echo $status; ?> Size</label>
 								    <div class="col-sm-7">
 								      <select style="text-align-last: center;" name="product_size" id="product_size" class="form-control" required>
 
-									  <?php 
-									 $ex=explode(",",$sizes);
-									foreach($ex as $taille){
-										echo "
+									  <?php
+$ex = explode(",", $sizes);
+            foreach ($ex as $taille) {
+                echo "
 										<option  value='$taille'>$taille</option>";
-									}
+            }
 
-										?>
-								      	
+            ?>
+
 								      </select>
 								    </div>
 								  </div>
@@ -314,10 +314,13 @@ if ($product_img3 != "") {
 								    <p class="card-text"><?php echo $product_desc; ?></p>
 								    <h5 class="card-title">Size &amp Fit</h5>
 								    <ul>
-								    	<li>Small</li>
-								    	<li>Medium</li>
-								    	<li>Large</li>
-								    	<li>Extra Large</li>
+
+									<?php
+$ex = explode(",", $sizes);
+            foreach ($ex as $taille) {
+                echo "
+										<li>$taille</li>";
+            }?>
 								    </ul>
 								  </div>
 								  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">

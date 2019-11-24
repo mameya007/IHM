@@ -75,6 +75,7 @@ foreach ($get_products as $get_product) {
     $product_label = $get_product->product_label;
     $manufacturer_id = $get_product->manufacturer_id;
     $product_psp_price = $get_product->product_psp_price;
+    $sizes = $get_product->sizes;
 
     $view_manufacturer = $getFromU->selectManufacturerByManufacturerID($manufacturer_id);
     $manufacturer_title = $view_manufacturer->manufacturer_title;
@@ -88,7 +89,6 @@ foreach ($get_products as $get_product) {
     }
 
     ?>
-
 
 	<div class="col-sm-6 col-md-4 justify-content-center single">
 		<div class="product mb-4">
