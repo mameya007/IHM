@@ -16,7 +16,7 @@
 								<li><a href="checkout.php">Login</a></li>
 							<?php else: ?>
 								<li><a href="logout.php">Logout</a></li>
-							<?php endif ?>
+							<?php endif?>
 							<li><a href="customer_register.php">Register</a></li>
 							<li><a href="terms.php">Terms &amp; Conditions</a></li>
 						</ul>
@@ -27,13 +27,13 @@
 						<h4>Top Pro Categories</h4>
 						<ul>
 							<?php
-								$product_cats = $getFromU->viewAllFromTable("product_categories");
-								foreach ($product_cats as $product_cat) {
-									$p_cat_id = $product_cat->p_cat_id;
-									$p_cat_title = $product_cat->p_cat_title;
-							?>
+$product_cats = $getFromU->selectTopProductCatagories();
+foreach ($product_cats as $product_cat) {
+    $p_cat_id = $product_cat->p_cat_id;
+    $p_cat_title = $product_cat->p_cat_title;
+    ?>
 							<li><a href="shop.php?p_cat_id=<?php echo $p_cat_id; ?>"><?php echo $p_cat_title; ?></a></li>
-						  <?php } ?>
+						  <?php }?>
 						</ul>
 						<hr class="hidden-md-down hidden-lg-down">
 					</div>
@@ -77,19 +77,6 @@
 			</div>
 		</div>
 
-
-		<div id="copyright">
-			<div class="container text-center">
-				<div class="row">
-					<div class="col-md-6">
-						<p class="text-lg-left">&copy; 2018 Obydullah Shishir</p>
-					</div>
-					<div class="col-md-6">
-						<p class="text-lg-right">Template by <a href="http://www.obydullahshishir.com">Obydullah Shishir</a></p>
-					</div>
-				</div>
-			</div>
-		</div>
 
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -195,7 +195,6 @@ if ($product_img3 != "") {
                     } else {
                         $product_price = $product_price;
                     }
-
                     $insert_cart = $getFromU->create("cart", array("p_id" => $p_id, "ip_add" => $ip_add, "qty" => $product_qty, "product_price" => $product_price, "size" => $product_size));
                     echo '<script>alert("This product added successfully in cart")</script>';
                     header('Location: shop.php');
@@ -212,7 +211,7 @@ if ($product_img3 != "") {
 				      				<label for="product_qty">Quantity</label>
 				    				</div>
 				    				<div class="col-md-9 quantity">
-				    					<input type="number"  min ="1"  name="product_qty" id="product_qty" value="<?php echo $product_qty; ?>" placeholder="1" required>
+				    					<input type="number"  min ="1"  name="product_qty" id="product_qty" value="1" required>
 				      						<div class="invalid-feedback">
 				        						Please provide a Product quantity.
 				      						</div>

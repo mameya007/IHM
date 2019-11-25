@@ -31,6 +31,7 @@ if (isset($_POST['update_cat'])) {
     }
 }
 
+
 ?>
 
 <nav aria-label="breadcrumb" class="my-4">

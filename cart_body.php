@@ -189,9 +189,22 @@ if (isset($_POST['update']) && !empty($_POST['update'])) {
             $delete_id = $getFromU->delete_from_cart_by_id($product_id);
         }
         if ($delete_id) {
-            //header('Location: cart.php');
+            header('Location: cart.php');
             echo '<script>alert("Item(s) Deleted Sucessfully")</script>';
             echo '<script>window.open("cart.php", "_self")</script>';
+        }
+    } else {
+        $records = $getFromU->select_products_by_ip($ip_add);
+        $quantites = $_POST["quentity"];
+        print_r($quantites);
+        $i = 0;
+        foreach ($records as $record) {
+            $product_id = $record->p_id;
+            $product_qty = $record->qty;
+            $product_price = $record->product_price;
+            $product_size = $record->size;
+            $qty = $quantites[$i] != null ? $quantites[$i] : $record->qty;
+            $getFromU->update_cart($product_id, $ip_add, $qty);
         }
     }
 }

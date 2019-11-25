@@ -1,35 +1,39 @@
-		<div id="footer">
+<div id="footer">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6 col-md-3">
 						<h4>Pages</h4>
 						<ul>
-							<li><a href="../cart.php">Shopping Cart</a></li>
-							<li><a href="../contact.php">Contact Us</a></li>
-							<li><a href="../shop.php">Shop</a></li>
-							<li><a href="my_account.php">My Account</a></li>
+							<li><a href="cart.php">Shopping Cart</a></li>
+							<li><a href="contact.php">Contact Us</a></li>
+							<li><a href="shop.php">Shop</a></li>
+							<li><a href="checkout.php">My Account</a></li>
 						</ul>
 						<hr>
 						<h4>User Section</h4>
 						<ul>
 							<?php if (!isset($_SESSION['customer_email'])): ?>
-								<li><a href="../checkout.php">Login</a></li>
+								<li><a href="checkout.php">Login</a></li>
 							<?php else: ?>
-								<li><a href="../logout.php">Logout</a></li>
-							<?php endif ?>
-							<li><a href="../customer_register.php">Register</a></li>
+								<li><a href="logout.php">Logout</a></li>
+							<?php endif?>
+							<li><a href="customer_register.php">Register</a></li>
+							<li><a href="terms.php">Terms &amp; Conditions</a></li>
 						</ul>
 						<hr class="hidden-md-down hidden-lg-down hidden-sm-down">
 					</div>
 
 					<div class="col-sm-6 col-md-3">
-						<h4>Top Products Categories</h4>
+						<h4>Top Pro Categories</h4>
 						<ul>
-							<li><a href="#">Jackets</a></li>
-							<li><a href="#">Accessories</a></li>
-							<li><a href="#">Shoes</a></li>
-							<li><a href="#">Coats</a></li>
-							<li><a href="#">T-Shirts</a></li>
+							<?php
+$product_cats = $getFromU->selectTopProductCatagories();
+foreach ($product_cats as $product_cat) {
+    $p_cat_id = $product_cat->p_cat_id;
+    $p_cat_title = $product_cat->p_cat_title;
+    ?>
+							<li><a href="shop.php?p_cat_id=<?php echo $p_cat_id; ?>"><?php echo $p_cat_title; ?></a></li>
+						  <?php }?>
 						</ul>
 						<hr class="hidden-md-down hidden-lg-down">
 					</div>
@@ -74,25 +78,16 @@
 		</div>
 
 
-		<div id="copyright">
-			<div class="container text-center">
-				<div class="row">
-					<div class="col-md-6">
-						<p class="text-lg-left">&copy; 2018 Obydullah Shishir</p>
-					</div>
-					<div class="col-md-6">
-						<p class="text-lg-right">Template by <a href="http://www.obydullahshishir.com">Obydullah Shishir</a></p>
-					</div>
-				</div>
-			</div>
-		</div>
-
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="assets/js/sweetalert.min.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/data_load.js"></script>
+	<script src="assets/js/bootstrap-number.js"></script>
+	<script>
+    $("input[type='number']").inputSpinner()
+	</script>
   </body>
 </html>

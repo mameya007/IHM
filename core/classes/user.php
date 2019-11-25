@@ -77,7 +77,7 @@
       $stmt = $this->pdo->prepare($sql);
   		if ($stmt) {
   			foreach ($fields as $key => $data) {
-  				$stmt->bindValue(':'.$key, '$data');
+  				$stmt->bindValue(':'.$key, $data);
         }
         $stmt->execute();
   			return $this->pdo->lastInsertId();
@@ -403,6 +403,7 @@
         return false;
       }
     }
+
 
 
     public function update_used_coupon($coupon_code)

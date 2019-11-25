@@ -148,7 +148,7 @@ foreach ($records as $record) {
 								      	<a href="details.php?product_id=<?php echo $product_id; ?>"><?php echo $product_title; ?></a>
 								      </td>
 								      <td>
-												<input type="number" name="quentity" value="<?php echo $_SESSION['product_qty']; ?>" data-product_id = "<?php echo $product_id; ?>" class="quentity form-control" >
+												<input type="number" name="quentity[]" value="<?php echo $_SESSION['product_qty']; ?>" data-product_id = "<?php echo $product_id; ?>" class="quentity form-control" >
 								      </td>
 								      <td>$ <?php echo $product_price; ?></td>
 								      <td><?php echo ucwords($product_size); ?></td>
@@ -185,7 +185,7 @@ foreach ($records as $record) {
 										<a href="index.php" class="btn btn-outline-primary form-control"><i class="fas fa-chevron-left"></i> Continue Shopping</a>
 									</div>
 									<div class="col-lg-2 pr-1 pb-2">
-										<a href="index.php" class="btn btn-outline-danger form-control"><i class="fas fa-shopping-cart"></i> Empty</a>
+										<button type="submit" name="empty" class="btn btn-outline-danger form-control"><i class="fas fa-shopping-cart"></i> Empty</button>
 									</div>
 									<div class="col-lg-3 pr-lg-3 pr-1 pb-2">
 										<button class="btn btn-outline-info float-sm-right form-control" type="submit" name="update" value="Update Cart">
@@ -200,17 +200,39 @@ foreach ($records as $record) {
 				    </form> <!-- Form End -->
 
 				    <?php
-if (isset($_POST['update']) && !empty($_POST['update'])) {
-    if (!empty($_POST['remove'])) {
-        $product_ids = $_POST['remove'];
-        foreach ($product_ids as $product_id) {
-            $delete_id = $getFromU->delete_from_cart_by_id($product_id);
+
+if (isset($_POST['empty'])) {
+    $res = $getFromU->delete_cart($ip_add);
+    if ($res) {
+        header('Location: cart.php');
+        echo '<script>window.open("cart.php", "_self")</script>';
+    }
+} else {
+    if (isset($_POST['update']) && !empty($_POST['update'])) {
+        if (!empty($_POST['remove'])) {
+            $product_ids = $_POST['remove'];
+            foreach ($product_ids as $product_id) {
+                $delete_id = $getFromU->delete_from_cart_by_id($product_id);
+            }
+            if ($delete_id) {
+                header('Location: cart.php');
+                echo '<script>alert("Item(s) Deleted Sucessfully")</script>';
+                echo '<script>window.open("cart.php", "_self")</script>';
+            }
         }
-        if ($delete_id) {
-            //header('Location: cart.php');
-            echo '<script>alert("Item(s) Deleted Sucessfully")</script>';
-            echo '<script>window.open("cart.php", "_self")</script>';
+        $records = $getFromU->select_products_by_ip($ip_add);
+        $quantites = $_POST["quentity"];
+        $i = 0;
+        foreach ($records as $record) {
+            $product_id = $record->p_id;
+            $product_qty = $record->qty;
+            $product_price = $record->product_price;
+            $product_size = $record->size;
+            $qty = !empty($quantites[$i]) ? $quantites[$i] : $record->qty;
+            $i += 1;
+            $getFromU->update_cart($product_id, $ip_add, $qty);
         }
+        header('Location: cart.php');
     }
 }
 ?>
