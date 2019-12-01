@@ -14,7 +14,7 @@
   box-shadow: 0 0 0 3px #17a2b8;
 }
 .pagination {
-  margin-right: 300px !important;
+  /* margin-right: 300px !important; */
 }
 .page-link {
   padding: 1.5rem 1rem;
