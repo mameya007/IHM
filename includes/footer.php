@@ -10,17 +10,8 @@
 							<li><a href="checkout.php">My Account</a></li>
 						</ul>
 						<hr>
-						<h4>User Section</h4>
-						<ul>
-							<?php if (!isset($_SESSION['customer_email'])): ?>
-								<li><a href="checkout.php">Login</a></li>
-							<?php else: ?>
-								<li><a href="logout.php">Logout</a></li>
-							<?php endif?>
-							<li><a href="customer_register.php">Register</a></li>
-							<li><a href="terms.php">Terms &amp; Conditions</a></li>
-						</ul>
-						<hr class="hidden-md-down hidden-lg-down hidden-sm-down">
+						
+						
 					</div>
 
 					<div class="col-sm-6 col-md-3">
@@ -41,11 +32,11 @@ foreach ($product_cats as $product_cat) {
 					<div class="col-sm-6 col-md-3">
 						<h4>Where we Are?</h4>
 						<address>
-		          <strong>BDLabIT</strong><br>
-		          B-18, Subhanbag<br>
-		          Savar, Dhaka 1340<br><br>
-		          <i class="fas fa-phone-square"></i><span class="sr-only">Telephone:</span> <a href="tel:+8801772981998">(+880) 1772981998</a><br>
-		          <i class="fas fa-envelope"></i><span class="sr-only">Mail:</span> <a href="mailto:info@bdlabit.com">info@bdlabit.com</a>
+						<strong>Adress</strong><br>
+		          B-18, TUNISIA<br>
+		          ROAD, IBN SINA 1340<br><br>
+		          <i class="fas fa-phone-square"></i><span class="sr-only">Telephone:</span> <a href="tel:+216 74 002 475">(+216) 74 002 475</a><br>
+		          <i class="fas fa-envelope"></i><span class="sr-only">Mail:</span> <a href="Email:SHOESTN@GMAIL.COM">SHOESTN@GMAIL.COM</a>
 		        </address>
 		        <a href="contact.php">Go to Contact Us Page</a>
 						<hr class="hidden-md-down hidden-lg-down">

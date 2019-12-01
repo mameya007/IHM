@@ -300,12 +300,7 @@ if ($product_img3 != "") {
 								  <li class="nav-item">
 								    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><?php echo $status; ?> Description</a>
 								  </li>
-								  <li class="nav-item">
-								    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><?php echo $status; ?> Fearures</a>
-								  </li>
-								  <li class="nav-item">
-								    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><?php echo $status; ?> Video</a>
-								  </li>
+
 								</ul>
 								<div class="tab-content" id="myTabContent">
 								  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
