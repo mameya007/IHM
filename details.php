@@ -56,7 +56,7 @@ if (isset($_GET['product_id'])) {
         $product_video = $get_product->product_video;
         $status = $get_product->status;
         $sizes = $get_product->sizes;
-
+        $colors = $get_product->colors;
         $view_manufacturer = $getFromU->selectManufacturerByManufacturerID($manufacturer_id);
         $manufacturer_title = $view_manufacturer->manufacturer_title;
 
@@ -217,25 +217,46 @@ if ($product_img3 != "") {
 				      						</div>
 				    				</div>
 				  				</div>
+								<div class="form-row mb-3">
+								<div class="col-3">
+								<label for="product_size"> <?php echo $status; ?> Size</label>
+								</div>
+								<div class="col-md-9">
+								<select style="text-align-last: center;" name="product_size" id="product_size" class="form-control" required>
 
-								  <div class="form-group row">
-								    <label for="product_size" class="col-sm-5 col-form-label-sm text-xl-right"><?php echo $status; ?> Size</label>
-								    <div class="col-sm-7">
-								      <select style="text-align-last: center;" name="product_size" id="product_size" class="form-control" required>
-
-									  <?php
+<?php
 $ex = explode(",", $sizes);
             foreach ($ex as $taille) {
                 echo "
-										<option  value='$taille'>$taille</option>";
+  <option  value='$taille'>$taille</option>";
             }
 
             ?>
 
+</select>
+</div>
+</div>
+								  <!-- <div class="form-group row">
+
+								    <label for="product_size" class="col-sm-5 col-form-label-sm text-xl-right"><?php echo $status; ?> Size</label>
+								    <div class="col-sm-7">
+								      <select style="text-align-last: center;" name="product_size" id="product_size" class="form-control" required>
 								      </select>
 								    </div>
-								  </div>
+								  </div> -->
+								  <div class="form-row mb-3">
+				    				<div class="col-3">
+				      				<label>Colors</label>
+				    				</div>
+<div style="text-align:center" class="col-md-9">
+<?php
 
+            foreach (explode(",", $colors) as $color) {
+                echo "<span style='background-color:" . strtolower($color) . "' class='dot'></span>";
+            }
+            ?>
+</div>
+</div>
 								  <div class="form-group row mb-0">
 								    <div class="col-sm-7">
 								      <input type="hidden" name="product_id" value="<?php echo $the_product_id; ?>">

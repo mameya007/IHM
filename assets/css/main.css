@@ -3,6 +3,16 @@
 ========================================================================== */
 
 /* General Styles */
+.dot {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 5px;
+}
+.dot:hover {
+  box-shadow: 0 0 0 3px #17a2b8;
+}
 .pagination {
   margin-right: 300px !important;
 }
