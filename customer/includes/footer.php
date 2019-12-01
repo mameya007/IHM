@@ -41,9 +41,9 @@ foreach ($product_cats as $product_cat) {
 					<div class="col-sm-6 col-md-3">
 						<h4>Where we Are?</h4>
 						<address>
-		          <strong>BDLabIT</strong><br>
-		          B-18, Subhanbag<br>
-		          Savar, Dhaka 1340<br><br>
+		          <strong>Adress</strong><br>
+		          B-18, TUNISIA<br>
+		          ROAD, IBN SINA 1340<br><br>
 		          <i class="fas fa-phone-square"></i><span class="sr-only">Telephone:</span> <a href="tel:+8801772981998">(+880) 1772981998</a><br>
 		          <i class="fas fa-envelope"></i><span class="sr-only">Mail:</span> <a href="mailto:info@bdlabit.com">info@bdlabit.com</a>
 		        </address>
