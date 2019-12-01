@@ -3,6 +3,21 @@
 ========================================================================== */
 
 /* General Styles */
+.pagination {
+  margin-right: 300px !important;
+}
+.page-link {
+  padding: 1.5rem 1rem;
+  width: 110px;
+}
+.vl {
+  border-left: 1.5px solid grey;
+  height: 20px;
+}
+.customColorNav {
+  /* color: #17a2b8 !important; */
+  /* line-height: 1.2em; */
+}
 .thumb img {
   width: 180px !important;
   height: 200px !important;
@@ -149,7 +164,7 @@ body {
 
 .navbar-nav li:hover a {
   text-decoration: none !important;
-  color: black !important;
+  /* color: black !important; */
 }
 
 .carousel-item img {

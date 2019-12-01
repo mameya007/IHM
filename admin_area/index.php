@@ -179,7 +179,6 @@ if (isset($_GET['dashboard'])) {
 			 <!-- END PAGE CONTENT-->
 
       <!-- COPYRIGHT START-->
-			<?php require_once 'includes/copyright.php';?>
       <!-- COPYRIGHT END-->
 
     </div>

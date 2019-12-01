@@ -1,18 +1,16 @@
 <?php
 
-  $get_products = $getFromU->viewAllFromTable("products");
-  $count_products = count($get_products);
+$get_products = $getFromU->viewAllFromTable("products");
+$count_products = count($get_products);
 
-  $get_customers = $getFromU->viewAllFromTable("customers");
-  $count_customers = count($get_customers);
+$get_customers = $getFromU->viewAllFromTable("customers");
+$count_customers = count($get_customers);
 
-  $get_product_categories = $getFromU->viewAllFromTable("product_categories");
-  $count_product_categories = count($get_product_categories);
+$get_product_categories = $getFromU->viewAllFromTable("product_categories");
+$count_product_categories = count($get_product_categories);
 
-  $get_pending_orders = $getFromU->viewAllFromTableWhereOrderStatus("pending_orders", "pending");
-  $count_pending_orders = count($get_pending_orders);
-
-
+$get_pending_orders = $getFromU->viewAllFromTableWhereOrderStatus("pending_orders", "pending");
+$count_pending_orders = count($get_pending_orders);
 
 ?>
 
@@ -35,12 +33,12 @@
     <div class="col-md-6 offset-md-3">
       <?php if (isset($_SESSION['admin_login_success_msg'])): ?>
         <div class="alert alert-success text-center alert-dismissible fade show rounded" role="alert">
-          <?php echo $_SESSION['admin_login_success_msg']; unset($_SESSION['admin_login_success_msg']); ?>
+          <?php echo $_SESSION['admin_login_success_msg'];unset($_SESSION['admin_login_success_msg']); ?>
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-      <?php endif ?>
+      <?php endif?>
     </div>
   </div>
 
@@ -85,17 +83,13 @@
 
 
   <div class="row">
-			<div class="col-lg-8">
+			<div class="col-lg-12">
         <div class="ibox rounded">
             <div class="ibox-head">
                 <div class="ibox-title"><i class="fas fa-money-bill-alt"></i> Latest Orders</div>
                 <div class="ibox-tools">
                     <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
-                    <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></a>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item">option 1</a>
-                        <a class="dropdown-item">option 2</a>
-                    </div>
+
                 </div>
             </div>
             <div class="ibox-body">
@@ -113,21 +107,21 @@
                     </thead>
                     <tbody>
                       <?php
-                        $get_orders = $getFromU->view_pending_orders_with_limit();
-                        $i = 0;
-                        foreach ($get_orders as $get_order) {
-                          $order_id = $get_order->order_id;
-                          $customer_id = $get_order->customer_id;
-                          $invoice_no = $get_order->invoice_no;
-                          $product_id = $get_order->product_id;
-                          $qty = $get_order->qty;
-                          $size = $get_order->size;
-                          $order_status = $get_order->order_status;
+$get_orders = $getFromU->view_pending_orders_with_limit();
+$i = 0;
+foreach ($get_orders as $get_order) {
+    $order_id = $get_order->order_id;
+    $customer_id = $get_order->customer_id;
+    $invoice_no = $get_order->invoice_no;
+    $product_id = $get_order->product_id;
+    $qty = $get_order->qty;
+    $size = $get_order->size;
+    $order_status = $get_order->order_status;
 
-                          $get_customer_details = $getFromU->view_customer_by_id($customer_id);
-                          $customer_name = $get_customer_details->customer_name;
-                          $i++;
-                      ?>
+    $get_customer_details = $getFromU->view_customer_by_id($customer_id);
+    $customer_name = $get_customer_details->customer_name;
+    $i++;
+    ?>
                       <tr>
                           <td>#<?php echo $i; ?></td>
                           <td><?php echo ucwords($customer_name); ?></td>
@@ -136,10 +130,10 @@
                           <td><?php echo $qty; ?></td>
                           <td><?php echo ucwords($size); ?></td>
                           <td>
-                            <span class="w-100 badge <?php ($order_status === 'pending') ? print 'badge-danger' : print 'badge-success'; ?>"  > <?php echo ucwords($order_status); ?></span>
+                            <span class="w-100 badge <?php ($order_status === 'pending') ? print 'badge-danger' : print 'badge-success';?>"  > <?php echo ucwords($order_status); ?></span>
                           </td>
                       </tr>
-                      <?php } ?>
+                      <?php }?>
                     </tbody>
                 </table>
             </div>
@@ -148,7 +142,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-4">
+    <!-- <div class="col-lg-4">
       <div class="ibox rounded">
         <div class="ibox-head">
           <div class="ibox-title"><i class="fas fa-medal"></i> Best Sellers</div>
@@ -209,7 +203,7 @@
             <a href="index.php?view_products">View All Products</a>
           </div>
       </div>
-  	</div>
+  	</div> -->
 
   </div>
 

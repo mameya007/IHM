@@ -838,6 +838,33 @@
       $count = $stmt->rowCount();
       return $count;
     }
+    public function count_categories()
+    {
+      $sql = "SELECT * FROM categories";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute();
+      $stmt->fetch();
+      $count = $stmt->rowCount();
+      return $count;
+    }
+    public function count_products()
+    {
+      $sql = "SELECT * FROM products";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute();
+      $stmt->fetch();
+      $count = $stmt->rowCount();
+      return $count;
+    }
+    public function count_customers()
+    {
+      $sql = "SELECT * FROM customers";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute();
+      $stmt->fetch();
+      $count = $stmt->rowCount();
+      return $count;
+    }
 
 
     public function count_product_by_status($order_status)

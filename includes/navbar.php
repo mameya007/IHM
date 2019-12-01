@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" id="navbar">
-	<a class="navbar-brand home" href="#">Chassures TN</a>
+	<a class="navbar-brand home" href="index.php">Shoes TN</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	<span class="navbar-toggler-icon"></span>
 	</button>
@@ -8,45 +8,64 @@
 		<ul class="navbar-nav mr-auto text-uppercase">
 			<li >
 				<a href="index.php">Home</a>
+
 			</li>
 
 			<li>
 
 <div class="container">
+
 	<div class="row">
+	<div class="vl"></div>
+
         <div class="dropdown">
             <a id="dLabel" role="button"  data-toggle="dropdown" data-hover="dropdown" data-target="#" href="#">
-                SHOP <span class="caret"></span>
+                Men <span class="caret"></span>
+			</a>
+    		<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+				<li><a class="customColorNav" tabindex="-1" href="shop.php?cat=1">ALL</a></li>
+				<hr>
+				<li> <a class="customColorNav" tabindex="0" href="shop.php?p_cat=1">Sneakers</a></li>
+				<hr>
+				<li><a class="customColorNav" tabindex="1" href="shop.php?p_cat=2">Derbies and Oxfords</a></li>
+				<hr>
+				<li><a class="customColorNav" tabindex="2" href="shop.php?p_cat=3">Moccasins and boat shoes</a></li>
+				<hr>
+				<li>	<a class="customColorNav" tabindex="3" href="shop.php?p_cat=4">Sandals</a></li>
+            </ul>
+		</div>
+		<div class="vl"></div>
+        <div class="dropdown">
+            <a id="dLabel" role="button"  data-toggle="dropdown" data-hover="dropdown" data-target="#" href="#">
+                Women <span class="caret"></span>
             </a>
     		<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-				<li><a href="shop.php">ALL</a></li>
-			<li class="dropdown-submenu">
-				<a tabindex="-1" href="shop.php?cat=1">MEN</a>
-                <ul class="dropdown-menu">
-                  <li> <a href="shop.php?p_cat=1">Sneakers</a></li>
-                  <li><a href="shop.php?p_cat=2">Derbies et Richelieus</a></li>
-                  <li><a href="shop.php?p_cat=3">Mocassins et chassueres bateau</a></li>
-                  <li><a href="shop.php?p_cat=4">Sandales</a></li>
-                </ul>
-			  </li>
-			  <li class="dropdown-submenu">
-                <a tabindex="-1" href="shop.php?cat=2">WOMEN</a>
-                <ul class="dropdown-menu">
-                  <li> <a href="shop.php?p_cat=5">Chaussure à Talons</a></li>
-                  <li><a href="shop.php?p_cat=6">Bottes</a></li>
-                  <li><a href="shop.php?p_cat=7">Derbies</a></li>
-                  <li><a href="shop.php?p_cat=8">Mocassins</a></li>
-                </ul>
-              </li>
-              <li class="dropdown-submenu">
-                <a tabindex="-1" href="shop.php?cat=3">KIDS</a>
-                <ul class="dropdown-menu">
-                  <li> <a href="shop.php?p_cat=9">Chaussures de ville</a></li>
-                  <li><a href="shop.php?p_cat=10">Chaussures pour bébé</a></li>
-				  <li><a href="shop.php?p_cat=11">Chaussures de sport</a></li>
-				  <li><a href="shop.php?p_cat=12">Chaussures de neige</a></li>
-                </ul>
-              </li>
+				  <li><a class="customColorNav" href="shop.php?cat=2">ALL</a></li>
+				  <hr>
+				  <li><a class="customColorNav" href="shop.php?p_cat=5">Heel shoe</a></li>
+				  <hr>
+				  <li> <a class="customColorNav" href="shop.php?p_cat=6">Boots</a></li>
+				  <hr>
+				  <li> <a class="customColorNav" href="shop.php?p_cat=7">Derbies</a></li>
+				  <hr>
+                 <li> <a class="customColorNav" href="shop.php?p_cat=8">Moccasin</a></li>
+            </ul>
+		</div>
+		<div class="vl"></div>
+        <div class="dropdown">
+            <a id="dLabel" role="button"  data-toggle="dropdown" data-hover="dropdown" data-target="#" href="#">
+                KIDS <span class="caret"></span>
+            </a>
+    		<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+				<li><a class="customColorNav" href="shop.php?cat=3">ALL</a></li>
+				<hr>
+				<li> <a class="customColorNav" href="shop.php?p_cat=9">City shoes</a></li>
+				<hr>
+				<li><a class="customColorNav" href="shop.php?p_cat=10">Baby shoes</a></li>
+				<hr>
+				<li><a class="customColorNav" href="shop.php?p_cat=11">Sport shoes</a></li>
+				<hr>
+				  <li><a class="customColorNav" href="shop.php?p_cat=12">Snow shoes</a></li>
             </ul>
         </div>
 	</div>
@@ -59,16 +78,15 @@
 			<?php else: ?>
 				<li><a href="customer/my_account.php?my_orders">My Account</a></li>
 			<?php endif?>
-
+			<div class="vl"></div>
 			<li>
 				<a href="contact.php">Contact Us</a>
 			</li>
+			<div class="vl"></div>
 			<li>
         <a href="about.php">About Us</a>
-      </li>
-      <li>
-        <a href="services.php">Services</a>
-      </li>
+	  </li>
+
 		</ul>
 
 			<a href="cart.php" class="btn btn-success mr-2"><i class="fas fa-shopping-cart"></i><span> <?php echo $getFromU->count_product_by_ip($ip_add); ?> items in Cart</span></a>
