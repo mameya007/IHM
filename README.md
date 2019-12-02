@@ -9,6 +9,8 @@ et simple animations avec JavaScript.
 
 Back-End : utilisant PHP
 
+Template : https://github.com/shishir75/Modern-E-Commerce-Store
+
 Pour connecter au base de données il faut changer les informations de connexion dans le fichier
 connexion.php qui existe dans le dossier core
 et n'oublier pas d'importer le base de donnée dans votre serveur
