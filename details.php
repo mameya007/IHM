@@ -178,7 +178,7 @@ if ($product_img3 != "") {
                 $ip_add = $getFromU->getRealUserIp();
                 $product_qty = $_POST['product_qty'];
                 $product_size = $_POST['product_size'];
-
+                $product_color = $_POST['color'];
                 $get_product = $getFromU->view_Product_By_Product_ID($p_id);
                 $product_price = $get_product->product_price;
                 $product_psp_price = $get_product->product_psp_price;
@@ -195,7 +195,7 @@ if ($product_img3 != "") {
                     } else {
                         $product_price = $product_price;
                     }
-                    $insert_cart = $getFromU->create("cart", array("p_id" => $p_id, "ip_add" => $ip_add, "qty" => $product_qty, "product_price" => $product_price, "size" => $product_size));
+                    $insert_cart = $getFromU->create("cart", array("p_id" => $p_id, "ip_add" => $ip_add, "qty" => $product_qty, "product_price" => $product_price, "size" => $product_size, "color" => $product_color));
                     echo '<script>alert("This product added successfully in cart")</script>';
                     header('Location: shop.php');
 
@@ -252,9 +252,12 @@ $ex = explode(",", $sizes);
 <?php
 
             foreach (explode(",", $colors) as $color) {
-                echo "<span style='background-color:" . strtolower($color) . "' class='dot'></span>";
-            }
-            ?>
+                ?>
+				<input name="color" id="color"  style="text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;background-color:<?php echo strtolower($color) ?>" class="dot" value="<?php echo strtolower($color) ?>" />
+            <?php
+}?>
 </div>
 </div>
 								  <div class="form-group row mb-0">
@@ -293,15 +296,15 @@ $view_icons = $getFromU->viewIconsByProductID($the_product_id);
 
 						<div class="row" id="thumbs">
 							<div class="col-4">
-								<a href="#" class="thumb"><img class="img-fluid img-thumbnail" src="admin_area/product_images/<?php echo $product_img1; ?>"></a>
+								<img class="img-fluid img-thumbnail" src="admin_area/product_images/<?php echo $product_img1; ?>">
 							</div>
 							<div class="col-4">
-								<a href="#" class="thumb"><img class="img-fluid img-thumbnail" src="admin_area/product_images/<?php echo $product_img2; ?>"></a>
+								<img class="img-fluid img-thumbnail" src="admin_area/product_images/<?php echo $product_img2; ?>">
 							</div>
 							<?php
 if ($product_img3 != "") {
                 echo "<div class='col-4'>
-							<a href='#' class='thumb'><img class='img-fluid img-thumbnail' src='admin_area/product_images/$product_img3'></a>
+							<img class='img-fluid img-thumbnail' src='admin_area/product_images/$product_img3'>
 						</div>"
                 ;
             }

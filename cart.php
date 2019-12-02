@@ -114,6 +114,7 @@ require_once 'includes/navbar.php';
 								      <th colspan="2" scope="col">Product</th>
 								      <th scope="col" width="20%">Quantity</th>
 								      <th scope="col">Unit Price ($)</th>
+								      <th scope="col">Color</th>
 								      <th scope="col">Size</th>
 								      <th scope="col">Delete</th>
 								      <th scope="col">Sub Total ($)</th>
@@ -130,6 +131,7 @@ foreach ($records as $record) {
     $product_qty = $record->qty;
     $product_price = $record->product_price;
     $product_size = $record->size;
+    $product_color = $record->color;
     $get_prices = $getFromU->viewProductByProductID($product_id);
     foreach ($get_prices as $get_price) {
         $product_img1 = $get_price->product_img1;
@@ -151,6 +153,9 @@ foreach ($records as $record) {
 												<input type="number" name="quentity[]" value="<?php echo $_SESSION['product_qty']; ?>" data-product_id = "<?php echo $product_id; ?>" class="quentity form-control" >
 								      </td>
 								      <td>$ <?php echo $product_price; ?></td>
+								      <td>
+								      <span class="dot" style="background-color:<?php echo $product_color ?>"> </span>
+								      </td>
 								      <td><?php echo ucwords($product_size); ?></td>
 								      <td>
 								      	<div class="custom-control custom-checkbox">
@@ -228,6 +233,7 @@ if (isset($_POST['empty'])) {
             $product_qty = $record->qty;
             $product_price = $record->product_price;
             $product_size = $record->size;
+            $product_color = $record->color;
             $qty = !empty($quantites[$i]) ? $quantites[$i] : $record->qty;
             $i += 1;
             $getFromU->update_cart($product_id, $ip_add, $qty);

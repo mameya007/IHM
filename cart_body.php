@@ -203,6 +203,7 @@ if (isset($_POST['update']) && !empty($_POST['update'])) {
             $product_qty = $record->qty;
             $product_price = $record->product_price;
             $product_size = $record->size;
+            $product_color = $record->color;
             $qty = $quantites[$i] != null ? $quantites[$i] : $record->qty;
             $getFromU->update_cart($product_id, $ip_add, $qty);
         }
